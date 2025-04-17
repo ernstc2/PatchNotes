@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PatchNotes</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo" id="home">
+      <img src="logo.png" alt="logo" />
+      <h1>PatchNotes</h1>
+    </div>
+    <div class="header-actions">
+      <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙</button>
+
+      <!-- Login button -->
+      <a class="login-btn" id="login-btn" href="login.html" style="display: block;">Login</a>
+        
+      <!-- Home button-->
+      <!-- <button class="login-btn" id="home-btn" style="display: block;">Home</button> -->
+      
+      <!-- Profile avatar -->
+      <button class="login-btn" id="profile-btn" style="display: none;">Profile</button>
+      
+      <button id="logout-btn" class="login-btn" style="display: none;">Logout</btn>
+    </div>
+  </header>
+
+  <!-- Filter Checkboxes -->
+  <div class="filter-container">
+    <label><input type="checkbox" value="Executive Order" checked onchange="filterCheckboxes()"> Executive Orders</label>
+    <label><input type="checkbox" value="Regulation" checked onchange="filterCheckboxes()"> Regulations</label>
+    <label><input type="checkbox" value="Bill" checked onchange="filterCheckboxes()"> Bills</label>
+  </div>
+
+  <!-- Where articles render -->
+  <div id="article-container"></div>
+
+  <!-- React & Component Scripts -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+  <script>
+    window.base = "";
+
+    function toggleDarkMode() {
+      document.documentElement.dataset.theme =
+        document.documentElement.dataset.theme === 'dark' ? '' : 'dark';
+    }
+
+  </script>
+  <script src="components/Article.js"></script>
+  <script src="components/Profile.js"></script>
+</body>
+</html>
+
+<!-- function filterCheckboxes() {
+      const checkedValues = Array.from(document.querySelectorAll('.filter-container input:checked')).map(cb => cb.value);
+      console.log(window.allArticles);
+      const filtered = window.allArticles.filter(article => checkedValues.includes(article.type));
+      window.displayArticles(root, filtered);
+    }
+
+-->

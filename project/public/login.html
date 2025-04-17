@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-form">
+            <h3>Login</h3>
+            <form id="login" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="userLogin">Username:</label>
+                    <input type="text" id="userLogin" name="userLogin" required>
+                </div>
+                <div class="form-group">
+                    <label for="passLogin">Password:</label>
+                    <input type="password" id="passLogin" name="passLogin" required>
+                </div>
+                <button type="submit" class="auth-btn">Login</button>
+            </form>
+        </div>
+
+        <div class="auth-form">
+            <h3>Register</h3>
+            <form id="register" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="userRegister">Username:</label>
+                    <input type="text" id="userRegister" name="userRegister" required>
+                </div>
+                <div class="form-group">
+                    <label for="passRegister">Password:</label>
+                    <input type="password" id="passRegister" name="passRegister" required>
+                </div>
+                <button type="submit" class="auth-btn">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

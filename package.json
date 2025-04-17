@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "async": "^3.2.6",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "type": "module"
+}

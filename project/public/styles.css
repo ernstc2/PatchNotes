@@ -1,0 +1,443 @@
+:root {
+    --primary-color: #4a6bff;
+    --background-color: #f9fafc;
+    --card-bg: #ffffff;
+    --text-color: #1f2937;
+    --muted-text: #6b7280;
+    --highlight: #ff6b6b;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  }
+  
+  [data-theme="dark"] {
+    --background-color: #1f2937;
+    --card-bg: #374151;
+    --text-color: #f3f4f6;
+    --muted-text: #9ca3af;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-bg);
+    box-shadow: var(--box-shadow);
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  .dark-mode-toggle {
+    padding: 0.4rem 0.8rem;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .dark-mode-toggle:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .login-btn {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem auto;
+    max-width: 800px;
+  }
+  
+  .filter-container label {
+    font-weight: 500;
+    color: var(--text-color);
+  }
+  
+  #article-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 2rem;
+    justify-content: center; /* THIS is the key to center the content */
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  
+  .article-card {
+    width: 100%;
+    max-width: 500px; /* <== Make sure cards have a max-width */
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  
+  
+  .article-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .article-card-heading {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: var(--muted-text);
+  }
+  
+  .article-card-body-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .article-card-body-content {
+    padding: 0; 
+    margin: 0;  
+    font-size: 0.95rem;
+    color: var(--muted-text);
+    overflow-y: auto;
+    max-height: 80px;
+}
+  
+  .bookmark-btn {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  
+  .bookmark-btn svg {
+    stroke: var(--text-color);
+    transition: fill 0.3s;
+  }
+  
+  .bookmark-btn.bookmarked svg {
+    fill: var(--highlight);
+  }
+  
+
+/* Login page styling */
+.auth-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.auth-form {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.auth-form h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--muted-text);
+    border-radius: 5px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-btn:hover {
+    background-color: #3a56d4;
+}
+
+.logout-btn {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 0.75rem;
+    background-color: var(--highlight);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #e05555;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--muted-text);
+}
+
+.form-switch a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-switch a:hover {
+    text-decoration: underline;
+}
+
+/* Fix for duplicate ID and label closing tags */
+#passLogin, #passRegister {
+    margin-bottom: 1rem;
+}
+
+label[for="passLogin"], label[for="passRegister"] {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.login-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.login-popup {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    position: relative;
+    width: 300px;
+    text-align: center;
+}
+
+.popup-close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login-action-btn {
+    margin-top: 15px;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.login-popup input.login-input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-error {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.login-links {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login-links a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+
+/* profile page */
+/* Profile Container */
+.profile-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Title */
+  .profile-container h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+  }
+  
+  /* If you specifically want more vertical spacing than horizontal: */
+  .articles-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    row-gap: 5rem; /* Vertical gap */
+    column-gap: 1rem; /* Horizontal gap */
+    padding: 1rem;
+  }
+  
+  /* Loading State */
+  .loading {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.2rem;
+    color: var(--muted-text);
+  }
+  
+  /* Empty State */
+  .empty {
+    text-align: center;
+    padding: 3rem;
+    font-size: 1.2rem;
+    color: var(--muted-text);
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin: 2rem auto;
+    max-width: 500px;
+    box-shadow: var(--box-shadow);
+  }
+  
+  /* Article Cards in Profile View */
+  .profile-container .article-card {
+    margin: 0; /* Remove default margins */
+    height: 100%; /* Make cards equal height */
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .profile-container .article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .articles-list {
+      grid-template-columns: 1fr;
+      padding: 0;
+    }
+    
+    .profile-container {
+      padding: 1rem;
+    }
+  }
+
+.action-btn {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.action-btn:hover {
+  background-color: #3a56d4;
+}

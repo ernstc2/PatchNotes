@@ -2,7 +2,7 @@
 
 > **Real‑time government updates, human‑readable summaries.** PatchNotes tracks U.S. executive orders, federal bills, and regulations, then distills them with AI so you can follow policy changes in minutes, not hours.
 
-![screenshot](docs/screenshot.png)
+![patchnotes](https://github.com/user-attachments/assets/f10665e3-47dd-4478-bec8-a07d946ee688)
 
 ---
 

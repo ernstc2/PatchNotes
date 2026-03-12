@@ -12,7 +12,7 @@ Eight phases that build PatchNotes from bare infrastructure to a portfolio-ready
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Next.js monorepo, Neon Postgres, CI/CD, and a live Vercel URL established before any product code
+- [x] **Phase 1: Foundation** - Next.js monorepo, Neon Postgres, CI/CD, and a live Vercel URL established before any product code (completed 2026-03-12)
 - [ ] **Phase 2: Data Ingestion** - Three government API adapters that reliably fill the database with filtered, deduplicated policy items every day
 - [ ] **Phase 3: AI Summarization** - Gemini Flash pipeline that converts every filtered item into a validated patch-notes summary at ingestion time
 - [ ] **Phase 4: Digest + Feed** - The core product: daily digest homepage and scrollable feed with filtering, item detail, and dark mode — publicly deployed
@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. TypeScript compilation passes with zero errors on `tsc --noEmit`
   4. Pushing to main triggers a GitHub Actions workflow that passes
   5. No secrets appear in the repository — all credentials load from environment variables
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 01-01-PLAN.md — Scaffold Next.js project, install deps, configure Drizzle/shadcn/next-themes, create DB schema and health API
 - [ ] 01-02-PLAN.md — Landing page with dark mode toggle and DB status, GitHub Actions CI, Vercel deployment verification
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 1/2 | In Progress|  |
+| 1. Foundation | 2/2 | Complete   | 2026-03-12 |
 | 2. Data Ingestion | 0/? | Not started | - |
 | 3. AI Summarization | 0/? | Not started | - |
 | 4. Digest + Feed | 0/? | Not started | - |

@@ -63,7 +63,7 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 
 ### Infrastructure
 
-- [ ] **INFRA-01**: App is deployed and publicly accessible with a real URL
+- [x] **INFRA-01**: App is deployed and publicly accessible with a real URL
 - [ ] **INFRA-02**: CI/CD pipeline runs tests on every push
 - [x] **INFRA-03**: App uses TypeScript throughout
 - [ ] **INFRA-04**: App has meaningful test coverage (unit + E2E)
@@ -142,7 +142,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PERS-03 | Phase 6 | Pending |
 | PERS-04 | Phase 6 | Pending |
 | PERS-05 | Phase 7 | Pending |
-| INFRA-01 | Phase 1 | Pending |
+| INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 8 | Pending |
 | INFRA-03 | Phase 1 | Complete |
 | INFRA-04 | Phase 8 | Pending |

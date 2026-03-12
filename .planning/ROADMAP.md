@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Digest + Feed** - The core product: daily digest homepage and scrollable feed with filtering, item detail, and dark mode — publicly deployed (completed 2026-03-12)
 - [x] **Phase 5: Search + Explore** - Postgres full-text keyword search and browse-all explore page with type/topic/date filters (completed 2026-03-12)
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
-- [ ] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow
+- [x] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow (completed 2026-03-12)
 - [ ] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project
 
 ## Phase Details
@@ -151,5 +151,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
-| 7. Email Notifications | 1/2 | In Progress|  |
+| 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
 | 8. Polish + Portfolio | 0/? | Not started | - |

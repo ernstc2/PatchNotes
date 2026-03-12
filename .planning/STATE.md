@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 07-01-PLAN.md
-last_updated: "2026-03-12T23:21:17.565Z"
+stopped_at: Completed 07-02-PLAN.md
+last_updated: "2026-03-12T23:27:37.669Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
-  completed_phases: 6
+  completed_phases: 7
   total_plans: 15
-  completed_plans: 14
+  completed_plans: 15
   percent: 100
 ---
 
@@ -98,6 +98,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 06-user-accounts-personalization P02 | 2 | 2 tasks | 6 files |
 | Phase 06-user-accounts-personalization P03 | 3 | 2 tasks | 5 files |
 | Phase 07-email-notifications P01 | 4 | 2 tasks | 8 files |
+| Phase 07-email-notifications P02 | 4 | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -149,6 +150,8 @@ Recent decisions affecting current work:
 - [Phase 06-user-accounts-personalization]: useOptimistic for BookmarkButton and TopicManager — local visual state reverts automatically on server action failure
 - [Phase 07-email-notifications]: groupRecipientsFromRows extracted as pure function — avoids fragile Drizzle chain mocks, tests run without DB connection
 - [Phase 07-email-notifications]: Opt-out filter applied in application layer — left join returns null for no-pref users, null treated as subscribed
+- [Phase 07-email-notifications]: resend.batch.send() over individual sends — one API call, simpler error handling for digest emails
+- [Phase 07-email-notifications]: from address uses onboarding@resend.dev shared domain — custom domain requires DNS verification, not needed for portfolio
 
 ### Pending Todos
 
@@ -162,6 +165,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:21:17.561Z
-Stopped at: Completed 07-01-PLAN.md
+Last session: 2026-03-12T23:27:37.666Z
+Stopped at: Completed 07-02-PLAN.md
 Resume file: None

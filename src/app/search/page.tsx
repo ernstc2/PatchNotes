@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { Search } from 'lucide-react';
+import { ArrowLeft, Search } from 'lucide-react';
 
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SearchInput } from '@/components/search-input';
@@ -26,11 +26,18 @@ export default async function SearchPage({
       {/* Sticky header */}
       <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur">
         <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
-          <div>
-            <Link href="/" className="text-xl font-bold tracking-tight hover:opacity-80 transition-opacity">
-              PatchNotes
+          <div className="flex items-center gap-2">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center rounded-md p-1.5 text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              aria-label="Back to home"
+            >
+              <ArrowLeft className="size-5" />
             </Link>
-            <p className="text-xs text-muted-foreground">Search government changes</p>
+            <div>
+              <h1 className="text-xl font-bold tracking-tight">Search</h1>
+              <p className="text-xs text-muted-foreground">Find government changes</p>
+            </div>
           </div>
           <nav className="flex items-center gap-1">
             <span className="inline-flex items-center justify-center rounded-md p-2 text-foreground">

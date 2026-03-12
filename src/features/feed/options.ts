@@ -1,5 +1,5 @@
 export const TYPE_OPTIONS = [
-  { value: 'all', label: 'All Types' },
+  { value: 'all', label: 'All types' },
   { value: 'executive_order', label: 'Executive Orders' },
   { value: 'bill', label: 'Bills' },
   { value: 'rule', label: 'Regulations' },
@@ -7,7 +7,7 @@ export const TYPE_OPTIONS = [
 ];
 
 export const TOPIC_OPTIONS = [
-  { value: 'all', label: 'All Topics' },
+  { value: 'all', label: 'All topics' },
   { value: 'healthcare', label: 'Healthcare' },
   { value: 'taxes', label: 'Taxes' },
   { value: 'immigration', label: 'Immigration' },

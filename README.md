@@ -1,159 +1,36 @@
-# PatchNotes
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> **Real‑time government updates, human‑readable summaries.** PatchNotes tracks U.S. executive orders, federal bills, and regulations, then distills them with AI so you can follow policy changes in minutes, not hours.
+## Getting Started
 
-![patchnotes](https://github.com/user-attachments/assets/f10665e3-47dd-4478-bec8-a07d946ee688)
-
----
-
-## ✨ Key Features
-
-| Feature | Description |
-|---------|-------------|
-| **Unified feed** | Aggregates data from the Congressional Bills API, FederalRegister API, and presidential Executive Orders feed. |
-| **AI summaries** | Google Gemini condenses each item into a plain‑English blurb on demand. |
-| **Bookmarks** | Authenticated users can save any article and view them in a personal profile. |
-| **Granular filters** | Toggle Bills, Executive Orders, and Regulations to tune the feed. |
-| **12‑hour auto‑refresh** | The server checks data freshness and backfills anything missed while you were away. |
-| **Dark mode** | One‑click 🌙 toggle, stored in local storage. |
-
----
-
-## 🏗 Tech Stack
-
-| Layer | Tech |
-|-------|------|
-| **Front‑end** | Vanilla HTML/CSS + React 18 (UMD) components |
-| **Back‑end** | Node.js 20, Express 5 |
-| **Database** | MongoDB Atlas, `connect‑mongo` session store |
-| **Auth** | Sessions + `express‑session`, salted bcrypt hashes |
-| **AI** | Google Gemini API for text summarisation |
-| **Infra** | Deployed on Render / Railway / Fly.io (pick yours) |
-
-### Folder Structure
-
-```text
-patchnotes/
-├── public/
-│   ├── index.html         # main feed
-│   ├── login.html         # auth page
-│   ├── styles.css         # theming
-│   └── components/
-│       ├── Article.js
-│       └── Profile.js
-├── server.js              # Express entry point
-├── apiCalls/              # wrappers for each data source
-│   ├── congressAPI.js
-│   ├── execOrderAPI.js
-│   ├── regulationAPI.js
-│   └── geminiAPI.js
-└── README.md
-```
-
----
-
-## ⚡️ Quick Start
-
-### 1. Clone & install
+First, run the development server:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/patchnotes.git
-cd patchnotes
-npm install
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### 2. Environment variables
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Create a `.env` file in the project root:
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```env
-DB_CONN=mongodb+srv://<user>:<pass>@cluster.mongodb.net?retryWrites=true&w=majority
-SESSION_SECRET=super‑secret‑string
-GEMINI_API_KEY=your_google_gemini_key
-NODE_ENV=development
-PORT=3000
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### 3. Run the app
+## Learn More
 
-```bash
-npm run dev     # nodemon + dotenv
-# OR
-node server.js  # production
-```
+To learn more about Next.js, take a look at the following resources:
 
-Browse to **http://localhost:3000** and start exploring.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
----
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## 📚 API Reference
+## Deploy on Vercel
 
-> All responses are JSON.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Data Endpoints
-
-| Method | Route | Purpose |
-|--------|-------|---------|
-| `GET` | `/data` | *TODO*: implement pagination (currently test stub). |
-| `GET` | `/data/latest` | Latest 7 days of **all** collections. |
-| `GET` | `/data/latest/:days` | Latest `:days` days (e.g. `/data/latest/30`). |
-| `GET` | `/data/:YYYY-:MM-:DD` | Data for a specific day. |
-| `GET` | `/data/:YYYY-MM-DD..YYYY-MM-DD` | Range query. |
-
-Pass `?collections=bills,execOrders` to limit the response.
-
-### Auth Endpoints
-
-| Method | Route | Body |
-|--------|-------|------|
-| `POST` | `/user/register` | `{ email, password }` |
-| `POST` | `/user/login` | `{ email, password }` |
-| `POST` | `/user/logout` | _none_ |
-| `GET`  | `/user/authenticated` | _cookie‑based_ |
-
-### Bookmarks
-
-| `POST` `/data/bookmark` | `{ id: { $oid }, type: bill\|order\|regulation\|proposed }`
-| `GET` `/user/bookmarks` | Returns grouped saved items.
-
----
-
-## 🛠 Development Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start server with nodemon and hot reload. |
-| `npm test` | Run test suite (Jest / Vitest – _coming soon_). |
-| `npm run lint` | ESLint + Prettier check. |
-
----
-
-## 🚀 Roadmap
-
-- [ ] Pagination & infinite scroll
-- [ ] Email digest via NodeMailer
-- [ ] CI/CD with GitHub Actions
-- [ ] Unit + integration tests
-- [ ] Dockerfile & Compose for local stacks
-
----
-
-## 🤝 Contributing
-
-1. Fork the repo & create your branch: `git checkout -b feature/awesome`  
-2. Commit your changes: `git commit -m 'feat: add awesome'`  
-3. Push to the branch: `git push origin feature/awesome`  
-4. Open a Pull Request.
-
-Please follow Conventional Commits and run `npm run lint` before pushing.
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License — see the `LICENSE` file for details.
-
----
-
-> _Made with ☕ and far too many government PDFs._
-
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

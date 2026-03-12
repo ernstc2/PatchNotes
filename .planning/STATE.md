@@ -3,11 +3,27 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
+stopped_at: Completed 01-foundation/01-01-PLAN.md
+last_updated: "2026-03-12T02:50:17.279Z"
+last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
+progress:
+  total_phases: 8
+  completed_phases: 0
+  total_plans: 2
+  completed_plans: 1
+  percent: 50
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: planning
 stopped_at: Phase 1 context gathered
 last_updated: "2026-03-12T02:18:20.614Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
-  total_phases: 8
+  [█████░░░░░] 50%
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
@@ -50,6 +66,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: —
 
 *Updated after each plan completion*
+| Phase 01-foundation P01 | 7 | 2 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -62,6 +79,8 @@ Recent decisions affecting current work:
 - Auth deferred to Phase 6 — digest, feed, and search are all public/read-only
 - Tiered ingestion: pre-generate at ingest for daily filtered items; on-demand + cache for the rest
 - All services on free tiers — Vercel Hobby, Neon free, Gemini Flash free, Resend free
+- [Phase 01-foundation]: Tailwind v4 CSS-first config (no tailwind.config.ts): shadcn/ui supports both v3 and v4
+- [Phase 01-foundation]: DB client lazy-loading Proxy singleton pattern to avoid DATABASE_URL errors at import time in serverless
 
 ### Pending Todos
 
@@ -75,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T02:18:20.611Z
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-foundation/01-CONTEXT.md
+Last session: 2026-03-12T02:50:17.277Z
+Stopped at: Completed 01-foundation/01-01-PLAN.md
+Resume file: None

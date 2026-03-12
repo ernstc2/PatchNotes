@@ -33,7 +33,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   3. TypeScript compilation passes with zero errors on `tsc --noEmit`
   4. Pushing to main triggers a GitHub Actions workflow that passes
   5. No secrets appear in the repository — all credentials load from environment variables
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 01-01-PLAN.md — Scaffold Next.js project, install deps, configure Drizzle/shadcn/next-themes, create DB schema and health API
 - [ ] 01-02-PLAN.md — Landing page with dark mode toggle and DB status, GitHub Actions CI, Vercel deployment verification
@@ -123,7 +123,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/2 | Planning complete | - |
+| 1. Foundation | 1/2 | In Progress|  |
 | 2. Data Ingestion | 0/? | Not started | - |
 | 3. AI Summarization | 0/? | Not started | - |
 | 4. Digest + Feed | 0/? | Not started | - |

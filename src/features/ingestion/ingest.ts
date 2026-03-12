@@ -6,6 +6,7 @@ import { fetchExecutiveOrders } from './adapters/executive-orders';
 import { fetchBills } from './adapters/bills';
 import { fetchRegulations } from './adapters/regulations';
 import { runSummarization } from '@/features/summarization/summarize';
+import { runNotifications } from '@/features/notifications/notify';
 import type { AdapterResult } from './types';
 
 interface IngestResult {
@@ -14,6 +15,8 @@ interface IngestResult {
   errors: string[];
   summarized: number;
   summarizationErrors: string[];
+  notified: number;
+  notificationErrors: string[];
 }
 
 export async function runIngest(): Promise<IngestResult> {
@@ -71,11 +74,16 @@ export async function runIngest(): Promise<IngestResult> {
   // Post-ingest: summarize any items without summaries
   const summarizationResult = await runSummarization();
 
+  // Post-summarization: send digest emails to qualifying users
+  const notificationResult = await runNotifications();
+
   return {
     results: allResults,
     totalItems: allItems.length,
     errors,
     summarized: summarizationResult.summarized,
     summarizationErrors: summarizationResult.errors,
+    notified: notificationResult.sent,
+    notificationErrors: notificationResult.errors,
   };
 }

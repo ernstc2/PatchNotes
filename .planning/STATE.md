@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Completed 04-01: shadcn primitives, feed data layer, presentational components"
-last_updated: "2026-03-12T04:51:05.041Z"
+stopped_at: "Checkpoint 04-02 Task 3: awaiting human-verify of feed and detail page UI"
+last_updated: "2026-03-12T04:55:34.380Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
-  completed_phases: 3
+  completed_phases: 4
   total_plans: 8
-  completed_plans: 7
+  completed_plans: 8
   percent: 100
 ---
 
@@ -89,6 +89,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-ai-summarization P01 | 2 | 2 tasks | 6 files |
 | Phase 03-ai-summarization P02 | 4 | 3 tasks | 5 files |
 | Phase 04-digest-feed P01 | 15 | 3 tasks | 9 files |
+| Phase 04-digest-feed P02 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -122,6 +123,7 @@ Recent decisions affecting current work:
 - [Phase 04-digest-feed]: FeedItem intersection type (PolicyItem & parsedSummary) preserves DB contract while adding domain field
 - [Phase 04-digest-feed]: prefetch={false} on FeedItemCard title links prevents 50-item prefetch storm on feed pages
 - [Phase 04-digest-feed]: parseSummary checks empty/whitespace before JSON.parse to safely handle blank DB summary values
+- [Phase 04-digest-feed]: FilterBar uses 'all' sentinel instead of empty string for Select value — base-ui onValueChange returns string | null
 
 ### Pending Todos
 
@@ -135,6 +137,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T04:51:05.038Z
-Stopped at: Completed 04-01: shadcn primitives, feed data layer, presentational components
+Last session: 2026-03-12T04:55:34.377Z
+Stopped at: Checkpoint 04-02 Task 3: awaiting human-verify of feed and detail page UI
 Resume file: None

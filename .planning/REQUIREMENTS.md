@@ -56,9 +56,9 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 
 ### UI & Design
 
-- [ ] **UI-01**: App has a clean, modern responsive design (works on mobile and desktop)
-- [ ] **UI-02**: App supports dark mode toggle
-- [ ] **UI-03**: UI uses the "patch notes" metaphor consistently (changelog-style formatting)
+- [x] **UI-01**: App has a clean, modern responsive design (works on mobile and desktop)
+- [x] **UI-02**: App supports dark mode toggle
+- [x] **UI-03**: UI uses the "patch notes" metaphor consistently (changelog-style formatting)
 - [x] **UI-04**: App loads fast — no waiting for AI calls at request time (pre-generated summaries)
 
 ### Infrastructure
@@ -127,9 +127,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FEED-04 | Phase 4 | Complete |
 | FEED-05 | Phase 4 | Complete |
 | FEED-06 | Phase 4 | Complete |
-| UI-01 | Phase 4 | Pending |
-| UI-02 | Phase 4 | Pending |
-| UI-03 | Phase 4 | Pending |
+| UI-01 | Phase 4 | Complete |
+| UI-02 | Phase 4 | Complete |
+| UI-03 | Phase 4 | Complete |
 | UI-04 | Phase 4 | Complete |
 | SRCH-01 | Phase 5 | Pending |
 | SRCH-02 | Phase 5 | Pending |

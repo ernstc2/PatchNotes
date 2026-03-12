@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Next.js monorepo, Neon Postgres, CI/CD, and a live Vercel URL established before any product code (completed 2026-03-12)
 - [x] **Phase 2: Data Ingestion** - Three government API adapters that reliably fill the database with filtered, deduplicated policy items every day (completed 2026-03-12)
 - [x] **Phase 3: AI Summarization** - Gemini Flash pipeline that converts every filtered item into a validated patch-notes summary at ingestion time (completed 2026-03-12)
-- [ ] **Phase 4: Digest + Feed** - The core product: daily digest homepage and scrollable feed with filtering, item detail, and dark mode — publicly deployed
+- [x] **Phase 4: Digest + Feed** - The core product: daily digest homepage and scrollable feed with filtering, item detail, and dark mode — publicly deployed (completed 2026-03-12)
 - [ ] **Phase 5: Search + Explore** - Postgres full-text keyword search and browse-all explore page with type/topic/date filters
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
 - [ ] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow
@@ -78,7 +78,7 @@ Plans:
   3. Clicking any item opens a detail page showing the structured patch-notes breakdown (what changed, who it affects, why it matters) and a link to the official government source
   4. The app works on a phone screen and looks clean on a desktop — no broken layouts
   5. A dark mode toggle switches the entire app and persists across page loads
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 04-01-PLAN.md — Install shadcn components, create feed types/queries with tests, and presentational components (badges, card)
 - [ ] 04-02-PLAN.md — Homepage feed page with filter bar, item detail page, and visual verification checkpoint
@@ -135,7 +135,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 1. Foundation | 2/2 | Complete   | 2026-03-12 |
 | 2. Data Ingestion | 2/2 | Complete   | 2026-03-12 |
 | 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
-| 4. Digest + Feed | 1/2 | In Progress|  |
+| 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
 | 5. Search + Explore | 0/? | Not started | - |
 | 6. User Accounts + Personalization | 0/? | Not started | - |
 | 7. Email Notifications | 0/? | Not started | - |

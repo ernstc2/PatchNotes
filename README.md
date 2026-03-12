@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PatchNotes
 
-## Getting Started
+[![CI](https://github.com/ernstc2/PatchNotes/actions/workflows/ci.yml/badge.svg)](https://github.com/ernstc2/PatchNotes/actions/workflows/ci.yml)
 
-First, run the development server:
+**[Live Demo](https://patchnotes.vercel.app)** — Government policy changes, explained clearly.
+
+Everyday people can quickly understand what their government changed today — no political spin, just clear, structured facts. PatchNotes ingests executive orders, congressional bills, and federal regulations daily, generates AI-powered summaries in patch-notes format (What changed / Who it affects / Why it matters), and sends personalized email digests to subscribers.
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend | Next.js 16 (App Router), React 19, Tailwind CSS v4, shadcn/ui |
+| Backend | Next.js API Routes, Drizzle ORM, Neon PostgreSQL |
+| AI | Google Gemini Flash (structured JSON summaries) |
+| Auth | better-auth |
+| Email | Resend + React Email |
+| CI/CD | GitHub Actions, Vercel |
+
+## One Interesting Engineering Problem
+
+**The lazy DB proxy pattern.** Neon's serverless Postgres client requires a `DATABASE_URL` at module import time. In a Next.js build, every route module is imported during the build step — where that env var isn't set. The solution: a module-level `db` export that is a JavaScript `Proxy` wrapping a `getDb()` factory. The real client is only instantiated on first method access at runtime, never at import time. This lets `npm run build` complete cleanly on Vercel without a live database connection.
+
+## Development
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in DATABASE_URL, GEMINI_API_KEY, etc.
+npm run db:migrate
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run test          # unit tests (Vitest)
+npx playwright test   # E2E tests (requires built app)
+```

@@ -2,7 +2,7 @@
 phase: 04-digest-feed
 plan: 02
 subsystem: ui
-tags: [nextjs, react, tailwind, shadcn, base-ui, server-components]
+tags: [nextjs, react, tailwind, shadcn, base-ui, server-components, next-themes]
 
 # Dependency graph
 requires:
@@ -29,6 +29,7 @@ tech-stack:
     - Sentinel 'all' value maps to empty string in URL — avoids base-ui Select empty-string issues
     - Frosted-glass sticky header: bg-background/80 backdrop-blur border-b border-border
     - Monospace section labels: font-mono text-xs uppercase tracking-wider text-muted-foreground
+    - resolvedTheme (not theme) from next-themes — theme returns 'system' when OS default active
 
 key-files:
   created:
@@ -36,28 +37,30 @@ key-files:
     - src/app/item/[id]/page.tsx
   modified:
     - src/app/page.tsx
+    - src/components/theme-toggle.tsx
 
 key-decisions:
   - "FilterBar uses 'all' sentinel instead of empty string for Select value — base-ui Select's onValueChange returns string | null, sentinel avoids null/empty ambiguity"
   - "Detail page repeats sticky header pattern from homepage for consistent branding without shared layout nesting"
   - "Each section (whatChanged, whoAffected, whyItMatters) rendered in bordered cards for visual scan-ability — changelog metaphor"
+  - "resolvedTheme used instead of theme in ThemeToggle — theme returns 'system' when OS default, resolvedTheme always returns 'light' or 'dark'"
 
 # Metrics
-duration: ~2min
+duration: ~25min
 completed: 2026-03-12
 ---
 
 # Phase 4 Plan 02: Digest Feed UI Summary
 
-**Homepage feed with URL-based type/topic filters and detail page with changelog-style structured summary breakdown — first user-facing product**
+**Homepage feed with URL-based type/topic filters and detail page with changelog-style structured summary breakdown — first user-facing product, dark mode verified working**
 
 ## Performance
 
-- **Duration:** ~2 min
+- **Duration:** ~25 min
 - **Started:** 2026-03-12T04:52:28Z
-- **Completed:** 2026-03-12T04:54:41Z
-- **Tasks:** 2/3 complete (Task 3 is checkpoint:human-verify)
-- **Files modified:** 2 created, 1 replaced
+- **Completed:** 2026-03-12T05:25:00Z
+- **Tasks:** 3/3 complete
+- **Files modified:** 2 created, 2 modified
 
 ## Accomplishments
 
@@ -65,8 +68,8 @@ completed: 2026-03-12
 - FilterBar client component with type/topic dropdowns updating URL via router.replace (scroll: false)
 - Sticky frosted-glass header with PatchNotes branding and ThemeToggle on all pages
 - Item detail page with SEO metadata, structured patch-notes sections, 404 handling
-- All 46 tests still passing after changes
-- TypeScript clean, Next.js build clean
+- Dark mode toggle verified working after resolvedTheme fix
+- All 46 tests passing, TypeScript clean, Next.js build clean
 
 ## Task Commits
 
@@ -74,19 +77,23 @@ Each task was committed atomically:
 
 1. **Task 1: Homepage feed page and FilterBar client component** - `c440146` (feat)
 2. **Task 2: Item detail page with structured patch-notes layout** - `f6e59d2` (feat)
-3. **Task 3: Verify feed and detail page UI** - CHECKPOINT (awaiting human verify)
+3. **Task 3: Verify feed and detail page UI** - checkpoint approved (no code commit)
+
+**Deviation fix:** `26b5687` (fix) — ThemeToggle resolvedTheme fix applied during checkpoint verification
 
 ## Files Created/Modified
 
 - `src/app/page.tsx` - Replaced splash page with async feed; getFeedItems, FilterBar, FeedItemCard, empty state
 - `src/components/filter-bar.tsx` - Client component; type/topic Select dropdowns; URL param state via router.replace
 - `src/app/item/[id]/page.tsx` - Detail page; generateMetadata; whatChanged/whoAffected/whyItMatters sections; 404 via notFound()
+- `src/components/theme-toggle.tsx` - Fixed resolvedTheme usage for reliable dark mode toggle
 
 ## Decisions Made
 
 - FilterBar uses `'all'` sentinel value instead of empty string — base-ui `onValueChange` returns `string | null`; mapping `'all'` to `''` in URL cleanly handles "no filter" state
 - Detail page duplicates sticky header (rather than shared layout) — keeps routing simple and avoids layout nesting complexity
 - `params` and `searchParams` both awaited as Promises — required by Next.js 15+ async server component API
+- `resolvedTheme` used instead of `theme` in ThemeToggle — `theme` returns `'system'` when OS system default is active, causing first-click toggle failure
 
 ## Deviations from Plan
 
@@ -99,9 +106,22 @@ Each task was committed atomically:
 - **Files modified:** `src/components/filter-bar.tsx`
 - **Commit:** Included in `c440146`
 
+**2. [Rule 1 - Bug] Fixed ThemeToggle using `theme` instead of `resolvedTheme`**
+- **Found during:** Task 3 (human-verify checkpoint — reported by user)
+- **Issue:** `theme` from next-themes returns `'system'` when OS default is active; toggle icon showed wrong state and first click didn't switch themes
+- **Fix:** Changed to `resolvedTheme` which always resolves to `'light'` or `'dark'`
+- **Files modified:** `src/components/theme-toggle.tsx`
+- **Verification:** User confirmed dark mode toggle works correctly after fix
+- **Commit:** `26b5687`
+
+---
+
+**Total deviations:** 2 auto-fixed (2 bugs)
+**Impact on plan:** Both fixes necessary for correctness. The null type fix was a TypeScript compile requirement; the resolvedTheme fix was required for UI-02 (dark mode toggle works on all pages). No scope creep.
+
 ## Issues Encountered
 
-None beyond the auto-fixed type error.
+None beyond the two auto-fixed bugs above.
 
 ## User Setup Required
 
@@ -109,13 +129,14 @@ None.
 
 ## Next Phase Readiness
 
-- Homepage and detail page complete; checkpoint:human-verify required before marking plan complete
-- After user approval, requirements FEED-01 through FEED-06 and UI-01 through UI-04 can be marked complete
+- Homepage and detail page complete and user-verified
+- Requirements FEED-01 through FEED-06 and UI-01 through UI-04 all complete
 - Phase 05 (digest email) can link directly to /item/[id] URLs
+- No blockers
 
 ## Self-Check: PASSED
 
-All 3 expected files found on disk. Both task commits verified in git log.
+All 4 expected files verified on disk. All task commits (c440146, f6e59d2, 26b5687) verified in git log.
 
 ---
 *Phase: 04-digest-feed*

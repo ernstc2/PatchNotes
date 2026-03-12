@@ -3,8 +3,8 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Checkpoint 04-02 Task 3: awaiting human-verify of feed and detail page UI"
-last_updated: "2026-03-12T04:55:34.380Z"
+stopped_at: Completed 04-02-PLAN.md
+last_updated: "2026-03-12T05:14:40.665Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
@@ -90,6 +90,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 03-ai-summarization P02 | 4 | 3 tasks | 5 files |
 | Phase 04-digest-feed P01 | 15 | 3 tasks | 9 files |
 | Phase 04-digest-feed P02 | 2 | 2 tasks | 3 files |
+| Phase 04-digest-feed P02 | 25 | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -124,6 +125,7 @@ Recent decisions affecting current work:
 - [Phase 04-digest-feed]: prefetch={false} on FeedItemCard title links prevents 50-item prefetch storm on feed pages
 - [Phase 04-digest-feed]: parseSummary checks empty/whitespace before JSON.parse to safely handle blank DB summary values
 - [Phase 04-digest-feed]: FilterBar uses 'all' sentinel instead of empty string for Select value — base-ui onValueChange returns string | null
+- [Phase 04-digest-feed]: resolvedTheme used instead of theme in ThemeToggle — theme returns 'system' when OS default, resolvedTheme always returns 'light' or 'dark'
 
 ### Pending Todos
 
@@ -137,6 +139,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T04:55:34.377Z
-Stopped at: Checkpoint 04-02 Task 3: awaiting human-verify of feed and detail page UI
+Last session: 2026-03-12T05:13:56.327Z
+Stopped at: Completed 04-02-PLAN.md
 Resume file: None

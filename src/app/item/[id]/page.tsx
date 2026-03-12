@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { headers } from 'next/headers';
 import { ExternalLink, ArrowLeft } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -8,6 +9,9 @@ import { parseSummary } from '@/features/feed/types';
 import { TypeBadge } from '@/components/type-badge';
 import { SeverityBadge } from '@/components/severity-badge';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { BookmarkButton } from '@/components/bookmark-button';
+import { auth } from '@/lib/auth';
+import { isBookmarked } from '@/features/auth/queries';
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -37,6 +41,12 @@ export default async function ItemPage({ params }: PageProps) {
   }
 
   const parsedSummary = parseSummary(item.summary);
+
+  // Optional session check — page works without auth
+  const session = await auth.api.getSession({ headers: await headers() }).catch(() => null);
+  const itemIsBookmarked = session
+    ? await isBookmarked(session.user.id, item.id)
+    : false;
 
   const formattedDate = item.date.toLocaleDateString('en-US', {
     month: 'long',
@@ -75,10 +85,17 @@ export default async function ItemPage({ params }: PageProps) {
           )}
         </div>
 
-        {/* Title */}
-        <h1 className="text-2xl font-bold leading-tight mb-6">
-          {item.title}
-        </h1>
+        {/* Title with bookmark */}
+        <div className="flex items-start justify-between gap-3 mb-6">
+          <h1 className="text-2xl font-bold leading-tight">
+            {item.title}
+          </h1>
+          {session && (
+            <div className="shrink-0 pt-1">
+              <BookmarkButton policyItemId={item.id} initialBookmarked={itemIsBookmarked} />
+            </div>
+          )}
+        </div>
 
         {parsedSummary ? (
           <>

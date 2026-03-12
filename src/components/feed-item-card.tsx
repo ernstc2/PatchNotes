@@ -9,15 +9,23 @@ import {
 } from '@/components/ui/card';
 import { SeverityBadge } from '@/components/severity-badge';
 import { TypeBadge } from '@/components/type-badge';
+import { BookmarkButton } from '@/components/bookmark-button';
 import type { PolicyItem } from '@/lib/db/schema/items';
 import type { SummaryOutput } from '@/features/feed/types';
 
 type FeedItemCardProps = {
   item: PolicyItem;
   parsedSummary: SummaryOutput | null;
+  isBookmarked?: boolean;
+  showBookmark?: boolean;
 };
 
-export function FeedItemCard({ item, parsedSummary }: FeedItemCardProps) {
+export function FeedItemCard({
+  item,
+  parsedSummary,
+  isBookmarked = false,
+  showBookmark = false,
+}: FeedItemCardProps) {
   const formattedDate = item.date.toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -27,11 +35,16 @@ export function FeedItemCard({ item, parsedSummary }: FeedItemCardProps) {
   return (
     <Card>
       <CardHeader>
-        <div className="flex flex-wrap items-center gap-2">
-          <TypeBadge type={item.type} />
-          <span className="text-xs text-muted-foreground">{formattedDate}</span>
-          {parsedSummary && (
-            <SeverityBadge severity={parsedSummary.severity} />
+        <div className="flex items-start justify-between gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <TypeBadge type={item.type} />
+            <span className="text-xs text-muted-foreground">{formattedDate}</span>
+            {parsedSummary && (
+              <SeverityBadge severity={parsedSummary.severity} />
+            )}
+          </div>
+          {showBookmark && (
+            <BookmarkButton policyItemId={item.id} initialBookmarked={isBookmarked} />
           )}
         </div>
       </CardHeader>

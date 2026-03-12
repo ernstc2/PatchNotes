@@ -17,7 +17,7 @@ function useIsMounted() {
 }
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const mounted = useIsMounted()
 
   if (!mounted) {
@@ -28,7 +28,7 @@ export function ThemeToggle() {
     )
   }
 
-  const isDark = theme === "dark"
+  const isDark = resolvedTheme === "dark"
 
   return (
     <Button

@@ -163,6 +163,21 @@ Database connection required before using the health endpoint or running migrati
 - Schema pattern established: add new tables to `src/lib/db/schema/`, export from barrel
 - No blockers for Phase 1 Plan 02 (landing page / initial UI)
 
+## Self-Check: PASSED
+
+All required files verified present:
+- src/lib/db/index.ts: FOUND
+- src/lib/db/schema/system.ts: FOUND
+- src/lib/db/schema/index.ts: FOUND
+- src/app/api/health/route.ts: FOUND
+- src/components/theme-provider.tsx: FOUND
+- drizzle.config.ts: FOUND
+- .env.example: FOUND
+
+All task commits verified:
+- 4dcf8b4: feat(01-01): scaffold Next.js project with dependencies and config — FOUND
+- ef8f704: feat(01-01): add Drizzle schema, DB client singleton, and health API route — FOUND
+
 ---
 *Phase: 01-foundation*
 *Completed: 2026-03-11*

@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import Link from 'next/link';
+import { Search } from 'lucide-react';
 
 import { ThemeToggle } from '@/components/theme-toggle';
 import { SearchInput } from '@/components/search-input';
@@ -31,7 +32,12 @@ export default async function SearchPage({
             </Link>
             <p className="text-xs text-muted-foreground">Search government changes</p>
           </div>
-          <ThemeToggle />
+          <nav className="flex items-center gap-1">
+            <span className="inline-flex items-center justify-center rounded-md p-2 text-foreground">
+              <Search className="size-5" />
+            </span>
+            <ThemeToggle />
+          </nav>
         </div>
       </header>
 

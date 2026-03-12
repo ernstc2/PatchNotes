@@ -1,20 +1,20 @@
 import Link from 'next/link';
-import { Search, Compass } from 'lucide-react';
+import { Search } from 'lucide-react';
 
 import { ThemeToggle } from '@/components/theme-toggle';
 import { FilterBar } from '@/components/filter-bar';
 import { FeedItemCard } from '@/components/feed-item-card';
-import { getFeedItems } from '@/features/feed/queries';
+import { getExploreItems } from '@/features/feed/queries';
 import { parseSummary } from '@/features/feed/types';
 
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ type?: string; topic?: string }>;
+  searchParams: Promise<{ type?: string; topic?: string; sort?: string }>;
 }) {
-  const { type, topic } = await searchParams;
+  const { type, topic, sort } = await searchParams;
 
-  const items = await getFeedItems({ type, topic });
+  const items = await getExploreItems({ type, topic, sort });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -35,20 +35,13 @@ export default async function HomePage({
             >
               <Search className="size-5" />
             </Link>
-            <Link
-              href="/explore"
-              className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-              aria-label="Explore"
-            >
-              <Compass className="size-5" />
-            </Link>
             <ThemeToggle />
           </nav>
         </div>
       </header>
 
       {/* Filter bar */}
-      <FilterBar activeType={type} activeTopic={topic} />
+      <FilterBar activeType={type} activeTopic={topic} activeSort={sort} />
 
       {/* Feed */}
       <main className="max-w-2xl mx-auto px-4 pb-12">

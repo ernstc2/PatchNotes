@@ -121,8 +121,8 @@ Plans:
   3. Users who have no watchlist topics, or whose topics had no new items, receive no email that day
 **Plans**: 2 plans
 Plans:
-- [ ] 07-01-PLAN.md — [to be planned]
-- [ ] 07-02-PLAN.md — [to be planned]
+- [ ] 07-01-PLAN.md — Notification infrastructure: notification_prefs schema, HMAC unsubscribe tokens, recipient query layer with tests
+- [ ] 07-02-PLAN.md — Email delivery pipeline: React Email template, Resend batch send, ingest integration, unsubscribe route
 
 ### Phase 8: Polish + Portfolio
 **Goal**: The deployed app is ready to show to a hiring manager — accessible, tested, documented, and reliable
@@ -151,5 +151,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
-| 7. Email Notifications | 0/? | Not started | - |
+| 7. Email Notifications | 0/2 | Not started | - |
 | 8. Polish + Portfolio | 0/? | Not started | - |

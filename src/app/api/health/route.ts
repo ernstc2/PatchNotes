@@ -1,11 +1,11 @@
-import { db } from '@/lib/db';
-import { systemStatus } from '@/lib/db/schema';
+import { neon } from '@neondatabase/serverless';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
-    await db.select().from(systemStatus).limit(1);
+    const sql = neon(process.env.DATABASE_URL!);
+    await sql`SELECT 1`;
     return Response.json({ status: 'ok', timestamp: new Date().toISOString() });
   } catch (error) {
     return Response.json(

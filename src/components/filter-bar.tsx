@@ -1,6 +1,6 @@
 "use client"
 
-import { useRouter, usePathname } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import {
   Select,
@@ -23,23 +23,20 @@ type FilterBarProps = {
 };
 
 export function FilterBar({ activeType, activeTopic, activeSort }: FilterBarProps) {
+  const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
 
-  function updateFilter(key: 'type' | 'topic' | 'sort', value: string) {
-    const actualValue = (key === 'sort') ? value : (value === 'all' ? '' : value);
-    const params = new URLSearchParams();
-
-    const currentType = key === 'type' ? actualValue : (activeType ?? '');
-    const currentTopic = key === 'topic' ? actualValue : (activeTopic ?? '');
-    const currentSort = key === 'sort' ? actualValue : (activeSort ?? '');
-
-    if (currentType) params.set('type', currentType);
-    if (currentTopic) params.set('topic', currentTopic);
-    if (currentSort && currentSort !== 'desc') params.set('sort', currentSort);
-
+  function updateFilter(key: string, value: string) {
+    const params = new URLSearchParams(searchParams.toString());
+    const shouldClear = (key === 'sort' && value === 'desc') || (key !== 'sort' && value === 'all');
+    if (shouldClear) {
+      params.delete(key);
+    } else {
+      params.set(key, value);
+    }
     const query = params.toString();
-    router.replace(query ? pathname + '?' + query : pathname, { scroll: false });
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
   }
 
   return (

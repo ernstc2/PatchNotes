@@ -19,17 +19,7 @@ export function parseSummary(raw: string | null): SummaryOutput | null {
 }
 
 export interface FeedFilters {
-  type?: string;
-  topic?: string;
-}
-
-export interface SearchFilters {
   q?: string;
-  type?: string;
-  topic?: string;
-}
-
-export interface ExploreFilters {
   type?: string;
   topic?: string;
   sort?: string; // 'asc' | 'desc', default 'desc'

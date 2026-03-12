@@ -9,7 +9,7 @@ vi.mock('@/lib/db', () => ({
 
 // Import after mocks
 import { parseSummary } from './types';
-import { getFeedItems, getItemById, getSearchResults, getExploreItems } from './queries';
+import { getFeedItems, getItemById } from './queries';
 import { db } from '@/lib/db';
 
 const mockDb = db as unknown as {
@@ -92,7 +92,7 @@ describe('getFeedItems', () => {
     expect(mockDb.select).toHaveBeenCalled();
     expect(whereMock).toHaveBeenCalled();
     expect(orderByMock).toHaveBeenCalled();
-    expect(limitMock).toHaveBeenCalledWith(50);
+    expect(limitMock).toHaveBeenCalledWith(100);
   });
 
   it('returns results from db query', async () => {
@@ -183,31 +183,23 @@ describe('getItemById', () => {
   });
 });
 
-// ─── getSearchResults ───────────────────────────────────────────────────────────
+// ─── getFeedItems with keyword search ────────────────────────────────────────
 
-describe('getSearchResults', () => {
-  it('calls db.select() and returns results with keyword', async () => {
+describe('getFeedItems keyword search', () => {
+  it('returns results with keyword', async () => {
     const fakeItem = { id: 'abc', title: 'Healthcare update' };
     makeSelectChain([fakeItem]);
 
-    const result = await getSearchResults({ q: 'healthcare' });
+    const result = await getFeedItems({ q: 'healthcare' });
 
     expect(mockDb.select).toHaveBeenCalled();
     expect(result).toEqual([fakeItem]);
   });
 
-  it('calls db.select() with no keyword and returns all summarized items', async () => {
+  it('works with keyword + type + topic filters combined', async () => {
     makeSelectChain([]);
 
-    await getSearchResults({});
-
-    expect(mockDb.select).toHaveBeenCalled();
-  });
-
-  it('calls db.select() with keyword + type + topic filters combined', async () => {
-    makeSelectChain([]);
-
-    await getSearchResults({ q: 'tax', type: 'bill', topic: 'taxes' });
+    await getFeedItems({ q: 'tax', type: 'bill', topic: 'taxes' });
 
     expect(mockDb.select).toHaveBeenCalled();
   });
@@ -215,45 +207,19 @@ describe('getSearchResults', () => {
   it('treats whitespace-only q as no keyword', async () => {
     makeSelectChain([]);
 
-    await getSearchResults({ q: '  ' });
+    await getFeedItems({ q: '  ' });
 
     expect(mockDb.select).toHaveBeenCalled();
-  });
-
-  it('applies limit of 50', async () => {
-    const { limitMock } = makeSelectChain([]);
-
-    await getSearchResults({ q: 'test' });
-
-    expect(limitMock).toHaveBeenCalledWith(50);
   });
 });
 
-// ─── getExploreItems ────────────────────────────────────────────────────────────
+// ─── getFeedItems with sort ──────────────────────────────────────────────────
 
-describe('getExploreItems', () => {
-  it('calls db.select() with no filters and returns results', async () => {
-    const fakeItem = { id: 'xyz', title: 'Explore item' };
-    makeSelectChain([fakeItem]);
-
-    const result = await getExploreItems({});
-
-    expect(mockDb.select).toHaveBeenCalled();
-    expect(result).toEqual([fakeItem]);
-  });
-
-  it('calls db.select() with type filter', async () => {
+describe('getFeedItems sort', () => {
+  it('accepts sort=asc param', async () => {
     makeSelectChain([]);
 
-    await getExploreItems({ type: 'bill' });
-
-    expect(mockDb.select).toHaveBeenCalled();
-  });
-
-  it('calls db.select() with sort=asc param', async () => {
-    makeSelectChain([]);
-
-    await getExploreItems({ sort: 'asc' });
+    await getFeedItems({ sort: 'asc' });
 
     expect(mockDb.select).toHaveBeenCalled();
   });
@@ -261,16 +227,8 @@ describe('getExploreItems', () => {
   it('applies limit of 100', async () => {
     const { limitMock } = makeSelectChain([]);
 
-    await getExploreItems({});
+    await getFeedItems({});
 
     expect(limitMock).toHaveBeenCalledWith(100);
-  });
-
-  it('calls db.select() with type and topic filters combined', async () => {
-    makeSelectChain([]);
-
-    await getExploreItems({ type: 'rule', topic: 'environment' });
-
-    expect(mockDb.select).toHaveBeenCalled();
   });
 });

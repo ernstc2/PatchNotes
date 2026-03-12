@@ -1,20 +1,20 @@
-import Link from 'next/link';
-import { Search } from 'lucide-react';
+import { Suspense } from 'react';
 
 import { ThemeToggle } from '@/components/theme-toggle';
+import { SearchInput } from '@/components/search-input';
 import { FilterBar } from '@/components/filter-bar';
 import { FeedItemCard } from '@/components/feed-item-card';
-import { getExploreItems } from '@/features/feed/queries';
+import { getFeedItems } from '@/features/feed/queries';
 import { parseSummary } from '@/features/feed/types';
 
 export default async function HomePage({
   searchParams,
 }: {
-  searchParams: Promise<{ type?: string; topic?: string; sort?: string }>;
+  searchParams: Promise<{ q?: string; type?: string; topic?: string; sort?: string }>;
 }) {
-  const { type, topic, sort } = await searchParams;
+  const { q, type, topic, sort } = await searchParams;
 
-  const items = await getExploreItems({ type, topic, sort });
+  const items = await getFeedItems({ q, type, topic, sort });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -27,18 +27,16 @@ export default async function HomePage({
               A changelog for your government
             </p>
           </div>
-          <nav className="flex items-center gap-1">
-            <Link
-              href="/search"
-              className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
-              aria-label="Search"
-            >
-              <Search className="size-5" />
-            </Link>
-            <ThemeToggle />
-          </nav>
+          <ThemeToggle />
         </div>
       </header>
+
+      {/* Search input */}
+      <div className="max-w-2xl mx-auto px-4 pt-4">
+        <Suspense fallback={<div className="h-10 w-full rounded-md border border-input bg-background animate-pulse" />}>
+          <SearchInput />
+        </Suspense>
+      </div>
 
       {/* Filter bar */}
       <FilterBar activeType={type} activeTopic={topic} activeSort={sort} />

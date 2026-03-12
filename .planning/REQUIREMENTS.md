@@ -42,9 +42,9 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 
 ### User Accounts
 
-- [ ] **USER-01**: User can create an account with email and password
-- [ ] **USER-02**: User session persists across browser refresh
-- [ ] **USER-03**: User can log in and log out
+- [x] **USER-01**: User can create an account with email and password
+- [x] **USER-02**: User session persists across browser refresh
+- [x] **USER-03**: User can log in and log out
 
 ### Personalization
 
@@ -134,9 +134,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | SRCH-01 | Phase 5 | Complete |
 | SRCH-02 | Phase 5 | Complete |
 | SRCH-03 | Phase 5 | Complete |
-| USER-01 | Phase 6 | Pending |
-| USER-02 | Phase 6 | Pending |
-| USER-03 | Phase 6 | Pending |
+| USER-01 | Phase 6 | Complete |
+| USER-02 | Phase 6 | Complete |
+| USER-03 | Phase 6 | Complete |
 | PERS-01 | Phase 6 | Pending |
 | PERS-02 | Phase 6 | Pending |
 | PERS-03 | Phase 6 | Pending |

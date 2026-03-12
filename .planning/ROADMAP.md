@@ -105,10 +105,11 @@ Plans:
   2. Refreshing the browser after login keeps the session alive — the user does not have to log in again
   3. A logged-in user can bookmark any item and view all bookmarks from their profile page
   4. A user can add and remove topics from their watchlist from a profile management page
-**Plans**: 2 plans
+**Plans:** 1/3 plans executed
 Plans:
-- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
-- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
+- [ ] 06-01-PLAN.md — Install better-auth, generate auth schema, create personalization tables, configure auth server/client/proxy, query layer
+- [ ] 06-02-PLAN.md — Sign-up page, sign-in page, topic onboarding flow, auth-aware header
+- [ ] 06-03-PLAN.md — Bookmark button on feed items, profile page with bookmarks and watchlist management
 
 ### Phase 7: Email Notifications
 **Goal**: Users with a watchlist receive an email after each daily ingest when new items match their followed topics, with a working unsubscribe link
@@ -120,8 +121,8 @@ Plans:
   3. Users who have no watchlist topics, or whose topics had no new items, receive no email that day
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
-- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
+- [ ] 07-01-PLAN.md — [to be planned]
+- [ ] 07-02-PLAN.md — [to be planned]
 
 ### Phase 8: Polish + Portfolio
 **Goal**: The deployed app is ready to show to a hiring manager — accessible, tested, documented, and reliable
@@ -134,8 +135,8 @@ Plans:
   4. The app returns a sensible 404 page for unknown routes and a 500 page for server errors — no blank screens
 **Plans**: 2 plans
 Plans:
-- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
-- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
+- [ ] 08-01-PLAN.md — [to be planned]
+- [ ] 08-02-PLAN.md — [to be planned]
 
 ## Progress
 
@@ -149,6 +150,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
-| 6. User Accounts + Personalization | 0/? | Not started | - |
+| 6. User Accounts + Personalization | 1/3 | In Progress|  |
 | 7. Email Notifications | 0/? | Not started | - |
 | 8. Polish + Portfolio | 0/? | Not started | - |

@@ -133,10 +133,10 @@ Plans:
   2. CI runs on every push and a green badge is visible on the README
   3. The app has meaningful unit and E2E test coverage — at minimum the ingest pipeline, search query, and auth flow are tested
   4. The app returns a sensible 404 page for unknown routes and a 500 page for server errors — no blank screens
-**Plans**: 2 plans
+**Plans:** 2 plans
 Plans:
-- [ ] 08-01-PLAN.md — [to be planned]
-- [ ] 08-02-PLAN.md — [to be planned]
+- [ ] 08-01-PLAN.md — Install Playwright, create E2E smoke tests, and add Next.js error pages (not-found, error, global-error)
+- [ ] 08-02-PLAN.md — Extend CI workflow with unit test and E2E jobs, rewrite README as portfolio artifact with CI badge
 
 ## Progress
 
@@ -152,4 +152,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
-| 8. Polish + Portfolio | 0/? | Not started | - |
+| 8. Polish + Portfolio | 0/2 | Not started | - |

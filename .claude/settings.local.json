@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node \"$HOME/.claude/get-shit-done/bin/gsd-tools.cjs\" commit \"docs: start milestone v1.0 Full Rebuild\" --files .planning/PROJECT.md .planning/STATE.md .planning/MILESTONES.md)",
+      "Bash(git add:*)",
+      "Bash(node \"$HOME/.claude/get-shit-done/bin/gsd-tools.cjs\" config-set workflow.research true)",
+      "Bash(node \"$HOME/.claude/get-shit-done/bin/gsd-tools.cjs\" commit \"docs: complete project research\" --files .planning/research/)",
+      "Bash(GIT_SEQUENCE_EDITOR=\"sed -i 's/^pick /reword /'\" git rebase -i c32331e 2>&1 || true)",
+      "Bash(git stash:*)",
+      "Bash(git filter-branch:*)",
+      "WebSearch"
+    ]
+  }
+}

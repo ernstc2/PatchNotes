@@ -148,7 +148,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 2. Data Ingestion | 2/2 | Complete   | 2026-03-12 |
 | 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
-| 5. Search + Explore | 0/? | Not started | - |
+| 5. Search + Explore | 1/2 | In Progress|  |
 | 6. User Accounts + Personalization | 0/? | Not started | - |
 | 7. Email Notifications | 0/? | Not started | - |
 | 8. Polish + Portfolio | 0/? | Not started | - |

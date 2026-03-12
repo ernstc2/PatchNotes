@@ -36,9 +36,9 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 
 ### Search & Explore
 
-- [ ] **SRCH-01**: User can search items by keyword
-- [ ] **SRCH-02**: User can filter search results by topic and type
-- [ ] **SRCH-03**: Search results show summary snippets for quick scanning
+- [x] **SRCH-01**: User can search items by keyword
+- [x] **SRCH-02**: User can filter search results by topic and type
+- [x] **SRCH-03**: Search results show summary snippets for quick scanning
 
 ### User Accounts
 
@@ -131,9 +131,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-02 | Phase 4 | Complete |
 | UI-03 | Phase 4 | Complete |
 | UI-04 | Phase 4 | Complete |
-| SRCH-01 | Phase 5 | Pending |
-| SRCH-02 | Phase 5 | Pending |
-| SRCH-03 | Phase 5 | Pending |
+| SRCH-01 | Phase 5 | Complete |
+| SRCH-02 | Phase 5 | Complete |
+| SRCH-03 | Phase 5 | Complete |
 | USER-01 | Phase 6 | Pending |
 | USER-02 | Phase 6 | Pending |
 | USER-03 | Phase 6 | Pending |

@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, vi } from 'vitest';
 
 beforeAll(() => {
   vi.stubEnv('UNSUBSCRIBE_SECRET', 'test-secret-key');

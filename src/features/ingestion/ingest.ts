@@ -5,12 +5,15 @@ import { systemStatus } from '@/lib/db/schema/system';
 import { fetchExecutiveOrders } from './adapters/executive-orders';
 import { fetchBills } from './adapters/bills';
 import { fetchRegulations } from './adapters/regulations';
+import { runSummarization } from '@/features/summarization/summarize';
 import type { AdapterResult } from './types';
 
 interface IngestResult {
   results: AdapterResult[];
   totalItems: number;
   errors: string[];
+  summarized: number;
+  summarizationErrors: string[];
 }
 
 export async function runIngest(): Promise<IngestResult> {
@@ -65,9 +68,14 @@ export async function runIngest(): Promise<IngestResult> {
     .filter((r) => r.error)
     .map((r) => `${r.source}: ${r.error}`);
 
+  // Post-ingest: summarize any items without summaries
+  const summarizationResult = await runSummarization();
+
   return {
     results: allResults,
     totalItems: allItems.length,
     errors,
+    summarized: summarizationResult.summarized,
+    summarizationErrors: summarizationResult.errors,
   };
 }

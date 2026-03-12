@@ -21,11 +21,11 @@ import { db } from '@/lib/db';
 import { generateSummary } from './gemini';
 
 // Helpers
-const mockDb = db as {
+const mockDb = db as unknown as {
   select: ReturnType<typeof vi.fn>;
   update: ReturnType<typeof vi.fn>;
 };
-const mockGenerateSummary = generateSummary as ReturnType<typeof vi.fn>;
+const mockGenerateSummary = generateSummary as unknown as ReturnType<typeof vi.fn>;
 
 function makePolicyItem(overrides: Partial<PolicyItem> = {}): PolicyItem {
   return {

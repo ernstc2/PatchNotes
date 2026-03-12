@@ -105,7 +105,7 @@ Plans:
   2. Refreshing the browser after login keeps the session alive — the user does not have to log in again
   3. A logged-in user can bookmark any item and view all bookmarks from their profile page
   4. A user can add and remove topics from their watchlist from a profile management page
-**Plans:** 1/3 plans executed
+**Plans:** 2/3 plans executed
 Plans:
 - [ ] 06-01-PLAN.md — Install better-auth, generate auth schema, create personalization tables, configure auth server/client/proxy, query layer
 - [ ] 06-02-PLAN.md — Sign-up page, sign-in page, topic onboarding flow, auth-aware header
@@ -150,6 +150,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
-| 6. User Accounts + Personalization | 1/3 | In Progress|  |
+| 6. User Accounts + Personalization | 2/3 | In Progress|  |
 | 7. Email Notifications | 0/? | Not started | - |
 | 8. Polish + Portfolio | 0/? | Not started | - |

@@ -48,7 +48,7 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 
 ### Personalization
 
-- [ ] **PERS-01**: User can select topics to follow during onboarding (healthcare, taxes, immigration, etc.)
+- [x] **PERS-01**: User can select topics to follow during onboarding (healthcare, taxes, immigration, etc.)
 - [ ] **PERS-02**: User can manage their topic watchlist from their profile
 - [ ] **PERS-03**: User can bookmark items to save for later
 - [ ] **PERS-04**: User can view all bookmarked items on their profile
@@ -137,7 +137,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | USER-01 | Phase 6 | Complete |
 | USER-02 | Phase 6 | Complete |
 | USER-03 | Phase 6 | Complete |
-| PERS-01 | Phase 6 | Pending |
+| PERS-01 | Phase 6 | Complete |
 | PERS-02 | Phase 6 | Pending |
 | PERS-03 | Phase 6 | Pending |
 | PERS-04 | Phase 6 | Pending |

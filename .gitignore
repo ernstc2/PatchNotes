@@ -137,3 +137,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 lab1/data.json
+
+# Claude Code
+.claude/
+.planning/

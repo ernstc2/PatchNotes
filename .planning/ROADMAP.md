@@ -78,7 +78,10 @@ Plans:
   3. Clicking any item opens a detail page showing the structured patch-notes breakdown (what changed, who it affects, why it matters) and a link to the official government source
   4. The app works on a phone screen and looks clean on a desktop — no broken layouts
   5. A dark mode toggle switches the entire app and persists across page loads
-**Plans**: TBD
+**Plans:** 2 plans
+Plans:
+- [ ] 04-01-PLAN.md — Install shadcn components, create feed types/queries with tests, and presentational components (badges, card)
+- [ ] 04-02-PLAN.md — Homepage feed page with filter bar, item detail page, and visual verification checkpoint
 
 ### Phase 5: Search + Explore
 **Goal**: A user can find any government item by keyword or browse the full archive by type, topic, and date
@@ -132,7 +135,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 1. Foundation | 2/2 | Complete   | 2026-03-12 |
 | 2. Data Ingestion | 2/2 | Complete   | 2026-03-12 |
 | 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
-| 4. Digest + Feed | 0/? | Not started | - |
+| 4. Digest + Feed | 0/2 | Not started | - |
 | 5. Search + Explore | 0/? | Not started | - |
 | 6. User Accounts + Personalization | 0/? | Not started | - |
 | 7. Email Notifications | 0/? | Not started | - |

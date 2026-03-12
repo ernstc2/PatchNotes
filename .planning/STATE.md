@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: "Completed 03-02: batch summarization, ingest integration, on-demand API route"
-last_updated: "2026-03-12T04:27:29.755Z"
+stopped_at: "Completed 04-01: shadcn primitives, feed data layer, presentational components"
+last_updated: "2026-03-12T04:51:05.041Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
   completed_phases: 3
-  total_plans: 6
-  completed_plans: 6
+  total_plans: 8
+  completed_plans: 7
   percent: 100
 ---
 
@@ -88,6 +88,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 02-data-ingestion P02 | 15 | 3 tasks | 6 files |
 | Phase 03-ai-summarization P01 | 2 | 2 tasks | 6 files |
 | Phase 03-ai-summarization P02 | 4 | 3 tasks | 5 files |
+| Phase 04-digest-feed P01 | 15 | 3 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -118,6 +119,9 @@ Recent decisions affecting current work:
 - [Phase 03-ai-summarization]: buildRawExcerpt is unexported — fallback is an implementation detail of summarizeItem
 - [Phase 03-ai-summarization]: Retry on null return only (not thrown errors) — thrown errors propagate to runSummarization catch block
 - [Phase 03-ai-summarization]: Re-query after summarizeItem in GET route — DB is source of truth, avoids route coupling to summarize internals
+- [Phase 04-digest-feed]: FeedItem intersection type (PolicyItem & parsedSummary) preserves DB contract while adding domain field
+- [Phase 04-digest-feed]: prefetch={false} on FeedItemCard title links prevents 50-item prefetch storm on feed pages
+- [Phase 04-digest-feed]: parseSummary checks empty/whitespace before JSON.parse to safely handle blank DB summary values
 
 ### Pending Todos
 
@@ -131,6 +135,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T04:24:23.441Z
-Stopped at: Completed 03-02: batch summarization, ingest integration, on-demand API route
+Last session: 2026-03-12T04:51:05.038Z
+Stopped at: Completed 04-01: shadcn primitives, feed data layer, presentational components
 Resume file: None

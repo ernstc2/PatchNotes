@@ -27,12 +27,12 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 
 ### Feed & Digest
 
-- [ ] **FEED-01**: User can view a daily digest page showing all changes from today in patch-notes format
-- [ ] **FEED-02**: User can scroll a chronological feed of recent items
-- [ ] **FEED-03**: User can filter feed by type (executive orders, bills, regulations)
-- [ ] **FEED-04**: User can filter feed by topic category
-- [ ] **FEED-05**: User can tap an item to see the full AI breakdown and link to official source
-- [ ] **FEED-06**: Every item links to its official government source (Congress.gov, Federal Register, etc.)
+- [x] **FEED-01**: User can view a daily digest page showing all changes from today in patch-notes format
+- [x] **FEED-02**: User can scroll a chronological feed of recent items
+- [x] **FEED-03**: User can filter feed by type (executive orders, bills, regulations)
+- [x] **FEED-04**: User can filter feed by topic category
+- [x] **FEED-05**: User can tap an item to see the full AI breakdown and link to official source
+- [x] **FEED-06**: Every item links to its official government source (Congress.gov, Federal Register, etc.)
 
 ### Search & Explore
 
@@ -59,7 +59,7 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 - [ ] **UI-01**: App has a clean, modern responsive design (works on mobile and desktop)
 - [ ] **UI-02**: App supports dark mode toggle
 - [ ] **UI-03**: UI uses the "patch notes" metaphor consistently (changelog-style formatting)
-- [ ] **UI-04**: App loads fast — no waiting for AI calls at request time (pre-generated summaries)
+- [x] **UI-04**: App loads fast — no waiting for AI calls at request time (pre-generated summaries)
 
 ### Infrastructure
 
@@ -121,16 +121,16 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AI-04 | Phase 3 | Complete |
 | AI-05 | Phase 3 | Complete |
 | AI-06 | Phase 3 | Complete |
-| FEED-01 | Phase 4 | Pending |
-| FEED-02 | Phase 4 | Pending |
-| FEED-03 | Phase 4 | Pending |
-| FEED-04 | Phase 4 | Pending |
-| FEED-05 | Phase 4 | Pending |
-| FEED-06 | Phase 4 | Pending |
+| FEED-01 | Phase 4 | Complete |
+| FEED-02 | Phase 4 | Complete |
+| FEED-03 | Phase 4 | Complete |
+| FEED-04 | Phase 4 | Complete |
+| FEED-05 | Phase 4 | Complete |
+| FEED-06 | Phase 4 | Complete |
 | UI-01 | Phase 4 | Pending |
 | UI-02 | Phase 4 | Pending |
 | UI-03 | Phase 4 | Pending |
-| UI-04 | Phase 4 | Pending |
+| UI-04 | Phase 4 | Complete |
 | SRCH-01 | Phase 5 | Pending |
 | SRCH-02 | Phase 5 | Pending |
 | SRCH-03 | Phase 5 | Pending |

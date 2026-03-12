@@ -9,25 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-
-const TYPE_OPTIONS = [
-  { value: 'all', label: 'All Types' },
-  { value: 'executive_order', label: 'Executive Orders' },
-  { value: 'bill', label: 'Bills' },
-  { value: 'rule', label: 'Regulations' },
-  { value: 'proposed_rule', label: 'Proposed Rules' },
-];
-
-const TOPIC_OPTIONS = [
-  { value: 'all', label: 'All Topics' },
-  { value: 'healthcare', label: 'Healthcare' },
-  { value: 'taxes', label: 'Taxes' },
-  { value: 'immigration', label: 'Immigration' },
-  { value: 'environment', label: 'Environment' },
-  { value: 'defense', label: 'Defense' },
-  { value: 'education', label: 'Education' },
-  { value: 'economy', label: 'Economy' },
-];
+import { TYPE_OPTIONS, TOPIC_OPTIONS } from '@/features/feed/options';
 
 type FilterBarProps = {
   activeType?: string;

@@ -22,3 +22,15 @@ export interface FeedFilters {
   type?: string;
   topic?: string;
 }
+
+export interface SearchFilters {
+  q?: string;
+  type?: string;
+  topic?: string;
+}
+
+export interface ExploreFilters {
+  type?: string;
+  topic?: string;
+  sort?: string; // 'asc' | 'desc', default 'desc'
+}

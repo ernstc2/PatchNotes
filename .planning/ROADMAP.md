@@ -91,7 +91,10 @@ Plans:
   1. Typing a keyword into the search bar returns relevant items with summary snippets visible in the results list
   2. Search results can be narrowed by topic and item type simultaneously — the URL encodes the filter state so it is shareable
   3. An explore page lets a user browse all items with type, topic, and date filters — no keyword required
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
+- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
 
 ### Phase 6: User Accounts + Personalization
 **Goal**: Users can create an account, pick the topics they care about, bookmark items, and manage their watchlist — all gated behind auth introduced only at this phase
@@ -102,7 +105,10 @@ Plans:
   2. Refreshing the browser after login keeps the session alive — the user does not have to log in again
   3. A logged-in user can bookmark any item and view all bookmarks from their profile page
   4. A user can add and remove topics from their watchlist from a profile management page
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
+- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
 
 ### Phase 7: Email Notifications
 **Goal**: Users with a watchlist receive an email after each daily ingest when new items match their followed topics, with a working unsubscribe link
@@ -112,7 +118,10 @@ Plans:
   1. After the daily ingest runs, a user subscribed to "healthcare" receives an email listing any new healthcare items ingested that day
   2. Clicking the unsubscribe link in the email removes the user from future notifications without requiring them to log in
   3. Users who have no watchlist topics, or whose topics had no new items, receive no email that day
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
+- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
 
 ### Phase 8: Polish + Portfolio
 **Goal**: The deployed app is ready to show to a hiring manager — accessible, tested, documented, and reliable
@@ -123,7 +132,10 @@ Plans:
   2. CI runs on every push and a green badge is visible on the README
   3. The app has meaningful unit and E2E test coverage — at minimum the ingest pipeline, search query, and auth flow are tested
   4. The app returns a sensible 404 page for unknown routes and a 500 page for server errors — no blank screens
-**Plans**: TBD
+**Plans**: 2 plans
+Plans:
+- [ ] 05-01-PLAN.md — Install deps, extend query layer with search/explore functions, create SearchInput component
+- [ ] 05-02-PLAN.md — Build /search and /explore pages, filter bars, homepage nav links
 
 ## Progress
 

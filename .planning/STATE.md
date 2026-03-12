@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 05-01-PLAN.md
-last_updated: "2026-03-12T20:59:07.977Z"
+stopped_at: Completed 05-02-PLAN.md
+last_updated: "2026-03-12T21:39:33.146Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
-  completed_phases: 4
+  completed_phases: 5
   total_plans: 10
-  completed_plans: 9
+  completed_plans: 10
   percent: 100
 ---
 
@@ -92,6 +92,8 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 04-digest-feed P02 | 2 | 2 tasks | 3 files |
 | Phase 04-digest-feed P02 | 25 | 3 tasks | 4 files |
 | Phase 05-search-explore P01 | 2 | 2 tasks | 8 files |
+| Phase 05-search-explore P02 | 2 | 2 tasks | 5 files |
+| Phase 05-search-explore P02 | 30 | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -129,6 +131,11 @@ Recent decisions affecting current work:
 - [Phase 04-digest-feed]: resolvedTheme used instead of theme in ThemeToggle — theme returns 'system' when OS default, resolvedTheme always returns 'light' or 'dark'
 - [Phase 05-search-explore]: Array<SQL | undefined> used for conditions in search/explore queries since or() returns SQL | undefined
 - [Phase 05-search-explore]: defaultValue (not value) on SearchInput to avoid cursor-jump with debounce pattern
+- [Phase 05-search-explore]: URLSearchParams param preservation in filter bars — new URLSearchParams(searchParams.toString()) preserves q param when changing type/topic
+- [Phase 05-search-explore]: getSearchResults gated on hasParams on /search page — avoids full-table scan when no params present
+- [Phase 05-search-explore]: Suspense required around SearchFilterBar and ExploreFilterBar — both call useSearchParams internally
+- [Phase 05-search-explore]: getFeedItems extended with q (ilike keyword) and sort params — getSearchResults/getExploreItems removed; one unified query
+- [Phase 05-search-explore]: Separate /search and /explore routes removed after user review — consolidated into homepage for simpler UX
 
 ### Pending Todos
 
@@ -142,6 +149,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T20:59:07.974Z
-Stopped at: Completed 05-01-PLAN.md
+Last session: 2026-03-12T21:39:33.142Z
+Stopped at: Completed 05-02-PLAN.md
 Resume file: None

@@ -16,7 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Data Ingestion** - Three government API adapters that reliably fill the database with filtered, deduplicated policy items every day (completed 2026-03-12)
 - [x] **Phase 3: AI Summarization** - Gemini Flash pipeline that converts every filtered item into a validated patch-notes summary at ingestion time (completed 2026-03-12)
 - [x] **Phase 4: Digest + Feed** - The core product: daily digest homepage and scrollable feed with filtering, item detail, and dark mode — publicly deployed (completed 2026-03-12)
-- [ ] **Phase 5: Search + Explore** - Postgres full-text keyword search and browse-all explore page with type/topic/date filters
+- [x] **Phase 5: Search + Explore** - Postgres full-text keyword search and browse-all explore page with type/topic/date filters (completed 2026-03-12)
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
 - [ ] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow
 - [ ] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project
@@ -148,7 +148,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 2. Data Ingestion | 2/2 | Complete   | 2026-03-12 |
 | 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
-| 5. Search + Explore | 1/2 | In Progress|  |
+| 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
 | 6. User Accounts + Personalization | 0/? | Not started | - |
 | 7. Email Notifications | 0/? | Not started | - |
 | 8. Polish + Portfolio | 0/? | Not started | - |

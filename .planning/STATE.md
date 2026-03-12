@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 06-03-PLAN.md
-last_updated: "2026-03-12T22:56:54.577Z"
+stopped_at: Completed 07-01-PLAN.md
+last_updated: "2026-03-12T23:21:17.565Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
   completed_phases: 6
-  total_plans: 13
-  completed_plans: 13
+  total_plans: 15
+  completed_plans: 14
   percent: 100
 ---
 
@@ -97,6 +97,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 06-user-accounts-personalization P01 | 5 | 3 tasks | 12 files |
 | Phase 06-user-accounts-personalization P02 | 2 | 2 tasks | 6 files |
 | Phase 06-user-accounts-personalization P03 | 3 | 2 tasks | 5 files |
+| Phase 07-email-notifications P01 | 4 | 2 tasks | 8 files |
 
 ## Accumulated Context
 
@@ -146,6 +147,8 @@ Recent decisions affecting current work:
 - [Phase 06-user-accounts-personalization]: HeaderAuth uses authClient.useSession() (client-side reactive) not server-side session — enables header to update immediately after sign-out without full page reload
 - [Phase 06-user-accounts-personalization]: TopicManager extracted as separate client component to keep profile page a server component
 - [Phase 06-user-accounts-personalization]: useOptimistic for BookmarkButton and TopicManager — local visual state reverts automatically on server action failure
+- [Phase 07-email-notifications]: groupRecipientsFromRows extracted as pure function — avoids fragile Drizzle chain mocks, tests run without DB connection
+- [Phase 07-email-notifications]: Opt-out filter applied in application layer — left join returns null for no-pref users, null treated as subscribed
 
 ### Pending Todos
 
@@ -159,6 +162,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T22:56:54.574Z
-Stopped at: Completed 06-03-PLAN.md
+Last session: 2026-03-12T23:21:17.561Z
+Stopped at: Completed 07-01-PLAN.md
 Resume file: None

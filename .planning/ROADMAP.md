@@ -151,5 +151,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 4. Digest + Feed | 2/2 | Complete   | 2026-03-12 |
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
-| 7. Email Notifications | 0/2 | Not started | - |
+| 7. Email Notifications | 1/2 | In Progress|  |
 | 8. Polish + Portfolio | 0/? | Not started | - |

@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import { Search, Compass } from 'lucide-react';
+
 import { ThemeToggle } from '@/components/theme-toggle';
 import { FilterBar } from '@/components/filter-bar';
 import { FeedItemCard } from '@/components/feed-item-card';
@@ -24,7 +27,23 @@ export default async function HomePage({
               A changelog for your government
             </p>
           </div>
-          <ThemeToggle />
+          <nav className="flex items-center gap-1">
+            <Link
+              href="/search"
+              className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              aria-label="Search"
+            >
+              <Search className="size-5" />
+            </Link>
+            <Link
+              href="/explore"
+              className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:text-foreground hover:bg-accent transition-colors"
+              aria-label="Explore"
+            >
+              <Compass className="size-5" />
+            </Link>
+            <ThemeToggle />
+          </nav>
         </div>
       </header>
 

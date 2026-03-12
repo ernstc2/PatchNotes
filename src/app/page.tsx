@@ -1,11 +1,17 @@
 import { Suspense } from 'react';
+import { headers } from 'next/headers';
+import Link from 'next/link';
 
 import { ThemeToggle } from '@/components/theme-toggle';
+import { HeaderAuth } from '@/components/header-auth';
 import { SearchInput } from '@/components/search-input';
 import { FilterBar } from '@/components/filter-bar';
 import { FeedItemCard } from '@/components/feed-item-card';
 import { getFeedItems } from '@/features/feed/queries';
 import { parseSummary } from '@/features/feed/types';
+import { auth } from '@/lib/auth';
+import { getUserTopics, getBookmarkedIds } from '@/features/auth/queries';
+import { TOPIC_OPTIONS } from '@/features/feed/options';
 
 export default async function HomePage({
   searchParams,
@@ -14,7 +20,34 @@ export default async function HomePage({
 }) {
   const { q, type, topic, sort } = await searchParams;
 
-  const items = await getFeedItems({ q, type, topic, sort });
+  // Optional session check — page works without auth
+  const session = await auth.api.getSession({ headers: await headers() }).catch(() => null);
+
+  let effectiveTopic = topic;
+  let bookmarkedIds = new Set<string>();
+  let isWatchlistFiltered = false;
+
+  if (session) {
+    const [userTopics, userBookmarkIds] = await Promise.all([
+      getUserTopics(session.user.id),
+      getBookmarkedIds(session.user.id),
+    ]);
+
+    bookmarkedIds = new Set(userBookmarkIds);
+
+    // Apply watchlist filter only if user has topics and no explicit topic filter is set
+    if (userTopics.length > 0 && !topic) {
+      effectiveTopic = userTopics[0];
+      isWatchlistFiltered = true;
+    }
+  }
+
+  const items = await getFeedItems({ q, type, topic: effectiveTopic, sort });
+
+  // Resolve display label for the active watchlist topic
+  const watchlistTopicLabel = isWatchlistFiltered
+    ? (TOPIC_OPTIONS.find((o) => o.value === effectiveTopic)?.label ?? effectiveTopic)
+    : null;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -27,7 +60,10 @@ export default async function HomePage({
               A changelog for your government
             </p>
           </div>
-          <ThemeToggle />
+          <div className="flex items-center gap-3">
+            <HeaderAuth />
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -41,8 +77,21 @@ export default async function HomePage({
       {/* Filter bar */}
       <FilterBar activeType={type} activeTopic={topic} activeSort={sort} />
 
+      {/* Watchlist filter notice */}
+      {isWatchlistFiltered && watchlistTopicLabel && (
+        <div className="max-w-2xl mx-auto px-4 pt-2">
+          <p className="text-xs text-muted-foreground">
+            Showing: <span className="font-medium text-foreground">{watchlistTopicLabel}</span>
+            {' '}
+            <Link href="/?topic=all" className="underline hover:text-foreground">
+              Show all
+            </Link>
+          </p>
+        </div>
+      )}
+
       {/* Feed */}
-      <main className="max-w-2xl mx-auto px-4 pb-12">
+      <main className="max-w-2xl mx-auto px-4 pb-12 pt-4">
         {items.length === 0 ? (
           <p className="py-16 text-center text-muted-foreground">
             No items match the selected filters.
@@ -50,12 +99,14 @@ export default async function HomePage({
         ) : (
           <div className="flex flex-col gap-4">
             {items.map((item) => {
-              const parsedSummary = parseSummary(item.summary);
+              const parsedSummaryData = parseSummary(item.summary);
               return (
                 <FeedItemCard
                   key={item.id}
                   item={item}
-                  parsedSummary={parsedSummary}
+                  parsedSummary={parsedSummaryData}
+                  showBookmark={!!session}
+                  isBookmarked={bookmarkedIds.has(item.id)}
                 />
               );
             })}

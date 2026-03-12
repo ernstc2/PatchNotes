@@ -1,0 +1,90 @@
+"use client"
+
+import { useRouter, usePathname } from 'next/navigation';
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+
+const TYPE_OPTIONS = [
+  { value: 'all', label: 'All Types' },
+  { value: 'executive_order', label: 'Executive Orders' },
+  { value: 'bill', label: 'Bills' },
+  { value: 'rule', label: 'Regulations' },
+  { value: 'proposed_rule', label: 'Proposed Rules' },
+];
+
+const TOPIC_OPTIONS = [
+  { value: 'all', label: 'All Topics' },
+  { value: 'healthcare', label: 'Healthcare' },
+  { value: 'taxes', label: 'Taxes' },
+  { value: 'immigration', label: 'Immigration' },
+  { value: 'environment', label: 'Environment' },
+  { value: 'defense', label: 'Defense' },
+  { value: 'education', label: 'Education' },
+  { value: 'economy', label: 'Economy' },
+];
+
+type FilterBarProps = {
+  activeType?: string;
+  activeTopic?: string;
+};
+
+export function FilterBar({ activeType, activeTopic }: FilterBarProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  function updateFilter(key: 'type' | 'topic', value: string) {
+    const actualValue = value === 'all' ? '' : value;
+    const params = new URLSearchParams();
+
+    const currentType = key === 'type' ? actualValue : (activeType ?? '');
+    const currentTopic = key === 'topic' ? actualValue : (activeTopic ?? '');
+
+    if (currentType) params.set('type', currentType);
+    if (currentTopic) params.set('topic', currentTopic);
+
+    const query = params.toString();
+    router.replace(query ? pathname + '?' + query : pathname, { scroll: false });
+  }
+
+  return (
+    <div className="flex flex-wrap gap-2 px-4 py-3 max-w-2xl mx-auto w-full">
+      <Select
+        value={activeType ?? 'all'}
+        onValueChange={(value) => updateFilter('type', value ?? 'all')}
+      >
+        <SelectTrigger className="w-44">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {TYPE_OPTIONS.map((opt) => (
+            <SelectItem key={opt.value} value={opt.value}>
+              {opt.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+
+      <Select
+        value={activeTopic ?? 'all'}
+        onValueChange={(value) => updateFilter('topic', value ?? 'all')}
+      >
+        <SelectTrigger className="w-44">
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          {TOPIC_OPTIONS.map((opt) => (
+            <SelectItem key={opt.value} value={opt.value}>
+              {opt.label}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+  );
+}

@@ -1,42 +1,57 @@
-import { ThemeToggle } from "@/components/theme-toggle"
-import { DbStatus } from "@/components/db-status"
+import { ThemeToggle } from '@/components/theme-toggle';
+import { FilterBar } from '@/components/filter-bar';
+import { FeedItemCard } from '@/components/feed-item-card';
+import { getFeedItems } from '@/features/feed/queries';
+import { parseSummary } from '@/features/feed/types';
 
-export default function Home() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string; topic?: string }>;
+}) {
+  const { type, topic } = await searchParams;
+
+  const items = await getFeedItems({ type, topic });
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-zinc-50 px-4 dark:bg-zinc-950">
-      <main className="flex w-full max-w-lg flex-col items-center gap-8 text-center">
-        {/* Header row with theme toggle */}
-        <div className="flex w-full items-center justify-end">
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Sticky header */}
+      <header className="sticky top-0 z-10 border-b border-border bg-background/80 backdrop-blur">
+        <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
+          <div>
+            <h1 className="text-xl font-bold tracking-tight">PatchNotes</h1>
+            <p className="text-xs text-muted-foreground">
+              A changelog for your government
+            </p>
+          </div>
           <ThemeToggle />
         </div>
+      </header>
 
-        {/* Branding */}
-        <div className="flex flex-col items-center gap-4">
-          <h1 className="text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            PatchNotes
-          </h1>
-          <p className="text-xl text-zinc-500 dark:text-zinc-400">
-            A changelog for your government
+      {/* Filter bar */}
+      <FilterBar activeType={type} activeTopic={topic} />
+
+      {/* Feed */}
+      <main className="max-w-2xl mx-auto px-4 pb-12">
+        {items.length === 0 ? (
+          <p className="py-16 text-center text-muted-foreground">
+            No items match the selected filters.
           </p>
-          <span className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 dark:border-blue-800 dark:bg-blue-950 dark:text-blue-400">
-            v1.0-dev
-          </span>
-        </div>
-
-        {/* Description */}
-        <p className="max-w-sm text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-          Everyday people can quickly understand what their government actually
-          changed today — no political spin, just clear structured facts.
-        </p>
-
-        {/* DB Status */}
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-            Database
-          </span>
-          <DbStatus />
-        </div>
+        ) : (
+          <div className="flex flex-col gap-4">
+            {items.map((item) => {
+              const parsedSummary = parseSummary(item.summary);
+              return (
+                <FeedItemCard
+                  key={item.id}
+                  item={item}
+                  parsedSummary={parsedSummary}
+                />
+              );
+            })}
+          </div>
+        )}
       </main>
     </div>
-  )
+  );
 }

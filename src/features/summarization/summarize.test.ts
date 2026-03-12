@@ -100,19 +100,19 @@ describe('runSummarization', () => {
     const fromMock = vi.fn().mockReturnValue({ where: whereMock });
     mockDb.select.mockReturnValue({ from: fromMock });
 
-    // First call throws, second returns summary
     const whereMock2 = vi.fn().mockResolvedValue([]);
     const setMock = vi.fn().mockReturnValue({ where: whereMock2 });
     mockDb.update.mockReturnValue({ set: setMock });
 
+    // item1: generateSummary throws on attempt 1 (error propagates, summarizeItem throws)
+    // item2: generateSummary returns validSummary on first call
     mockGenerateSummary
-      .mockRejectedValueOnce(new Error('Network error'))
       .mockRejectedValueOnce(new Error('Network error'))
       .mockResolvedValue(validSummary);
 
     const result = await runSummarization();
 
-    // item1 fails (network error on both attempts), item2 succeeds
+    // item1 fails (throws on attempt 1 — error propagates up), item2 succeeds
     expect(result.summarized).toBe(1);
     expect(result.errors.length).toBe(1);
   });

@@ -19,11 +19,11 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 ### AI Summarization
 
 - [x] **AI-01**: Each filtered item gets an AI-generated summary in structured patch-notes format (What changed / Who it affects / Why it matters)
-- [ ] **AI-02**: Summaries are pre-generated at ingestion time using Gemini Flash free tier and cached permanently in the database
+- [x] **AI-02**: Summaries are pre-generated at ingestion time using Gemini Flash free tier and cached permanently in the database
 - [x] **AI-03**: Each summary includes impact framing — who is personally affected by the change
 - [x] **AI-04**: Each item displays a severity/scope signal (broad national impact vs narrow administrative change)
 - [x] **AI-05**: AI output uses structured JSON schema validated before storage
-- [ ] **AI-06**: Items outside the daily filter get on-demand summarization when a user clicks them, then cached
+- [x] **AI-06**: Items outside the daily filter get on-demand summarization when a user clicks them, then cached
 
 ### Feed & Digest
 
@@ -116,11 +116,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | DATA-05 | Phase 2 | Complete |
 | DATA-06 | Phase 2 | Complete |
 | AI-01 | Phase 3 | Complete |
-| AI-02 | Phase 3 | Pending |
+| AI-02 | Phase 3 | Complete |
 | AI-03 | Phase 3 | Complete |
 | AI-04 | Phase 3 | Complete |
 | AI-05 | Phase 3 | Complete |
-| AI-06 | Phase 3 | Pending |
+| AI-06 | Phase 3 | Complete |
 | FEED-01 | Phase 4 | Pending |
 | FEED-02 | Phase 4 | Pending |
 | FEED-03 | Phase 4 | Pending |

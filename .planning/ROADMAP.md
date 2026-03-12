@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Foundation** - Next.js monorepo, Neon Postgres, CI/CD, and a live Vercel URL established before any product code (completed 2026-03-12)
 - [x] **Phase 2: Data Ingestion** - Three government API adapters that reliably fill the database with filtered, deduplicated policy items every day (completed 2026-03-12)
-- [ ] **Phase 3: AI Summarization** - Gemini Flash pipeline that converts every filtered item into a validated patch-notes summary at ingestion time
+- [x] **Phase 3: AI Summarization** - Gemini Flash pipeline that converts every filtered item into a validated patch-notes summary at ingestion time (completed 2026-03-12)
 - [ ] **Phase 4: Digest + Feed** - The core product: daily digest homepage and scrollable feed with filtering, item detail, and dark mode — publicly deployed
 - [ ] **Phase 5: Search + Explore** - Postgres full-text keyword search and browse-all explore page with type/topic/date filters
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
@@ -131,7 +131,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 |-------|----------------|--------|-----------|
 | 1. Foundation | 2/2 | Complete   | 2026-03-12 |
 | 2. Data Ingestion | 2/2 | Complete   | 2026-03-12 |
-| 3. AI Summarization | 0/2 | Not started | - |
+| 3. AI Summarization | 2/2 | Complete   | 2026-03-12 |
 | 4. Digest + Feed | 0/? | Not started | - |
 | 5. Search + Explore | 0/? | Not started | - |
 | 6. User Accounts + Personalization | 0/? | Not started | - |

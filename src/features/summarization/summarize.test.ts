@@ -51,6 +51,7 @@ const validSummary: SummaryOutput = {
   whoAffected: 'Everyone',
   whyItMatters: 'It matters',
   severity: 'narrow_administrative',
+  topic: 'healthcare',
 };
 
 beforeEach(() => {
@@ -137,6 +138,7 @@ describe('summarizeItem', () => {
       expect.objectContaining({
         summary: JSON.stringify(validSummary),
         updatedAt: expect.any(Date),
+        topic: 'healthcare',
       })
     );
   });
@@ -156,16 +158,17 @@ describe('summarizeItem', () => {
     // Should have been called twice (initial + one retry)
     expect(mockGenerateSummary).toHaveBeenCalledTimes(2);
 
-    // Should still write to DB with fallback data
+    // Should still write to DB with fallback data including topic: 'other'
     expect(setMock).toHaveBeenCalledWith(
       expect.objectContaining({
         summary: expect.stringContaining('My Policy Title'),
         updatedAt: expect.any(Date),
+        topic: 'other',
       })
     );
   });
 
-  it('raw excerpt fallback produces valid SummarySchema-shaped data', async () => {
+  it('raw excerpt fallback produces valid SummarySchema-shaped data with topic: other', async () => {
     const item = makePolicyItem({ title: 'Long title that might get sliced down to 120 chars maximum allowed' });
 
     const whereMock = vi.fn().mockResolvedValue([]);
@@ -186,6 +189,7 @@ describe('summarizeItem', () => {
       whoAffected: expect.any(String),
       whyItMatters: expect.any(String),
       severity: expect.stringMatching(/^(broad_national|moderate_regional|narrow_administrative)$/),
+      topic: 'other',
     });
 
     // headline should use item title (sliced to 120)

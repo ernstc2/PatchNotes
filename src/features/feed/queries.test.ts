@@ -56,6 +56,7 @@ describe('parseSummary', () => {
       whoAffected: 'Everyone',
       whyItMatters: 'It matters',
       severity: 'narrow_administrative',
+      topic: 'healthcare',
     };
     const result = parseSummary(JSON.stringify(valid));
     expect(result).toEqual(valid);
@@ -64,7 +65,7 @@ describe('parseSummary', () => {
   it('returns null for JSON missing required fields', () => {
     const partial = {
       headline: 'Test headline',
-      // missing whatChanged, whoAffected, whyItMatters, severity
+      // missing whatChanged, whoAffected, whyItMatters, severity, topic
     };
     expect(parseSummary(JSON.stringify(partial))).toBeNull();
   });
@@ -76,6 +77,7 @@ describe('parseSummary', () => {
       whoAffected: 'Everyone',
       whyItMatters: 'Matters',
       severity: 'not_a_valid_severity',
+      topic: 'healthcare',
     };
     expect(parseSummary(JSON.stringify(invalid))).toBeNull();
   });

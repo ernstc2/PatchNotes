@@ -12,6 +12,7 @@ function buildRawExcerpt(item: PolicyItem): SummaryOutput {
     whoAffected: 'General public',
     whyItMatters: 'See official source for details.',
     severity: 'narrow_administrative',
+    topic: 'other',
   };
 }
 
@@ -29,7 +30,7 @@ export async function summarizeItem(item: PolicyItem): Promise<void> {
 
   await db
     .update(policyItems)
-    .set({ summary: JSON.stringify(summaryData), updatedAt: new Date() })
+    .set({ summary: JSON.stringify(summaryData), topic: summaryData.topic, updatedAt: new Date() })
     .where(eq(policyItems.id, item.id));
 }
 

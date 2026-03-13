@@ -1,12 +1,15 @@
 import { createHmac, timingSafeEqual } from 'crypto';
 
-if (!process.env.UNSUBSCRIBE_SECRET) {
-  throw new Error('UNSUBSCRIBE_SECRET is required');
+function getSecret(): string {
+  const secret = process.env.UNSUBSCRIBE_SECRET;
+  if (!secret) {
+    throw new Error('UNSUBSCRIBE_SECRET is required');
+  }
+  return secret;
 }
 
-const SECRET = process.env.UNSUBSCRIBE_SECRET;
-
 export function generateUnsubToken(userId: string): string {
+  const SECRET = getSecret();
   const hmac = createHmac('sha256', SECRET);
   hmac.update(userId);
   const sig = hmac.digest('base64url'); // URL-safe, no padding issues
@@ -15,6 +18,7 @@ export function generateUnsubToken(userId: string): string {
 
 export function verifyUnsubToken(token: string): string | null {
   try {
+    const SECRET = getSecret();
     const decoded = Buffer.from(token, 'base64url').toString('utf-8');
     const [userId, sig] = decoded.split(':');
     if (!userId || !sig) return null;

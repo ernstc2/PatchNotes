@@ -8,8 +8,6 @@ import { db } from '@/lib/db';
 import { notificationPrefs } from '@/lib/db/schema/notification-prefs';
 import { inArray } from 'drizzle-orm';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function runNotifications(): Promise<NotificationResult> {
   try {
     // Gracefully skip if API key is not configured
@@ -17,6 +15,8 @@ export async function runNotifications(): Promise<NotificationResult> {
       console.warn('[notify] RESEND_API_KEY not configured — skipping email notifications');
       return { sent: 0, skipped: 0, errors: ['RESEND_API_KEY not configured'] };
     }
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     const allRecipients = await getUsersWithMatchingItems();
 

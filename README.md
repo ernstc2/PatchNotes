@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/ernstc2/PatchNotes/actions/workflows/ci.yml/badge.svg)](https://github.com/ernstc2/PatchNotes/actions/workflows/ci.yml)
 
-**[Live Demo](https://patchnotes.vercel.app)** — Government policy changes, explained clearly.
+**[Live Demo](https://patch-notes-sigma.vercel.app)** — Government policy changes, explained clearly.
 
 Everyday people can quickly understand what their government changed today — no political spin, just clear, structured facts. PatchNotes ingests executive orders, congressional bills, and federal regulations daily, generates AI-powered summaries in patch-notes format (What changed / Who it affects / Why it matters), and sends personalized email digests to subscribers.
 

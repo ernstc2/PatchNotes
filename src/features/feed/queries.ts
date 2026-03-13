@@ -2,6 +2,7 @@ import { desc, asc, eq, and, isNotNull, or, ilike, inArray, gte, lte, type SQL }
 
 import { db } from '@/lib/db';
 import { policyItems } from '@/lib/db/schema/items';
+import { systemStatus } from '@/lib/db/schema/system';
 import type { FeedFilters } from './types';
 
 export async function getFeedItems(filters?: FeedFilters) {
@@ -70,6 +71,15 @@ export async function getFeedItems(filters?: FeedFilters) {
     .where(and(...(conditions.filter(Boolean) as SQL[])))
     .orderBy(order)
     .limit(100);
+}
+
+export async function getLastIngestTime(): Promise<Date | null> {
+  const rows = await db
+    .select({ checkedAt: systemStatus.checkedAt })
+    .from(systemStatus)
+    .orderBy(desc(systemStatus.checkedAt))
+    .limit(1);
+  return rows[0]?.checkedAt ?? null;
 }
 
 export async function getItemById(id: string) {

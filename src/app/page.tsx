@@ -8,6 +8,7 @@ import { SearchInput } from '@/components/search-input';
 import { FilterBar } from '@/components/filter-bar';
 import { FeedItemCard } from '@/components/feed-item-card';
 import { getFeedItems } from '@/features/feed/queries';
+import { IngestStatus } from '@/components/ingest-status';
 import { parseSummary } from '@/features/feed/types';
 import { auth } from '@/lib/auth';
 import { getUserTopics, getBookmarkedIds } from '@/features/auth/queries';
@@ -79,6 +80,11 @@ export default async function HomePage({
 
       {/* Filter bar */}
       <FilterBar activeType={type} activeTopic={topic} activeSort={sort} />
+
+      {/* Ingest status */}
+      <div className="max-w-2xl mx-auto px-4 pt-2">
+        <IngestStatus />
+      </div>
 
       {/* Watchlist filter notice */}
       {isWatchlistFiltered && watchlistTopicLabel && (

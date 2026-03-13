@@ -30,14 +30,14 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 - [x] **FEED-01**: User can view a daily digest page showing all changes from today in patch-notes format
 - [x] **FEED-02**: User can scroll a chronological feed of recent items
 - [x] **FEED-03**: User can filter feed by type (executive orders, bills, regulations)
-- [ ] **FEED-04**: User can filter feed by topic category
+- [x] **FEED-04**: User can filter feed by topic category
 - [x] **FEED-05**: User can tap an item to see the full AI breakdown and link to official source
 - [x] **FEED-06**: Every item links to its official government source (Congress.gov, Federal Register, etc.)
 
 ### Search & Explore
 
 - [x] **SRCH-01**: User can search items by keyword
-- [ ] **SRCH-02**: User can filter search results by topic and type
+- [x] **SRCH-02**: User can filter search results by topic and type
 - [x] **SRCH-03**: Search results show summary snippets for quick scanning
 
 ### User Accounts
@@ -124,7 +124,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | FEED-01 | Phase 4 | Complete |
 | FEED-02 | Phase 4 | Complete |
 | FEED-03 | Phase 4 | Complete |
-| FEED-04 | Phase 9 | Pending |
+| FEED-04 | Phase 9 | Complete |
 | FEED-05 | Phase 4 | Complete |
 | FEED-06 | Phase 4 | Complete |
 | UI-01 | Phase 4 | Complete |
@@ -132,7 +132,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | UI-03 | Phase 4 | Complete |
 | UI-04 | Phase 4 | Complete |
 | SRCH-01 | Phase 5 | Complete |
-| SRCH-02 | Phase 9 | Pending |
+| SRCH-02 | Phase 9 | Complete |
 | SRCH-03 | Phase 5 | Complete |
 | USER-01 | Phase 6 | Complete |
 | USER-02 | Phase 6 | Complete |

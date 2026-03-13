@@ -150,7 +150,7 @@ Plans:
   3. Search results can be narrowed by topic and the URL-encoded filter returns correct results
   4. A user subscribed to "healthcare" receives an email after ingest when healthcare items were ingested that day
   5. All existing items in the database have been backfilled with topic classifications
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 09-01-PLAN.md — Extend SummarySchema with topic enum, update Gemini prompt, write topic during summarization, backfill existing items
 - [ ] 09-02-PLAN.md — Verify topic filtering in feed, search, and email notification pipeline end-to-end
@@ -170,4 +170,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
 | 8. Polish + Portfolio | 2/2 | Complete   | 2026-03-13 |
-| 9. Topic Classification Pipeline | 0/2 | Pending    |  |
+| 9. Topic Classification Pipeline | 1/2 | In Progress|  |

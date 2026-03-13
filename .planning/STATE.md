@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 08-01-PLAN.md
-last_updated: "2026-03-13T00:47:48.938Z"
+stopped_at: Completed 09-01-PLAN.md
+last_updated: "2026-03-13T01:51:42.894Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
-  total_phases: 8
+  total_phases: 9
   completed_phases: 8
-  total_plans: 17
-  completed_plans: 17
+  total_plans: 19
+  completed_plans: 18
   percent: 100
 ---
 
@@ -101,6 +101,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 07-email-notifications P02 | 4 | 2 tasks | 6 files |
 | Phase 08-polish-portfolio P02 | 1 | 2 tasks | 2 files |
 | Phase 08-polish-portfolio P01 | 55 | 2 tasks | 10 files |
+| Phase 09-topic-classification-pipeline P01 | 3 | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -159,6 +160,8 @@ Recent decisions affecting current work:
 - [Phase 08-polish-portfolio]: Vitest exclude tests/e2e/** added — Playwright spec files use @playwright/test imports Vitest cannot resolve
 - [Phase 08-polish-portfolio]: UNSUBSCRIBE_SECRET and Resend module-level validation moved to runtime helpers — extends lazy-loading pattern to all env-dependent module singletons
 - [Phase 08-polish-portfolio]: global-error.tsx uses inline styles not Tailwind — globals.css may not load when root layout errors
+- [Phase 09-topic-classification-pipeline]: TOPIC_VALUES as const array in schema.ts drives both SummarySchema enum and options.ts UI filter (single source of truth)
+- [Phase 09-topic-classification-pipeline]: 'other' excluded from TOPIC_OPTIONS UI filter — it is an internal fallback classification only
 
 ### Pending Todos
 
@@ -172,6 +175,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T00:44:09.761Z
-Stopped at: Completed 08-01-PLAN.md
+Last session: 2026-03-13T01:51:42.891Z
+Stopped at: Completed 09-01-PLAN.md
 Resume file: None

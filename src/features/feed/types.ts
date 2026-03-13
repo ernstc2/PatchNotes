@@ -21,6 +21,7 @@ export function parseSummary(raw: string | null): SummaryOutput | null {
 export interface FeedFilters {
   q?: string;
   type?: string;
-  topic?: string;
+  topic?: string;    // single explicit URL param (FilterBar click)
+  topics?: string[]; // watchlist multi-topic array (homepage personalization)
   sort?: string; // 'asc' | 'desc', default 'desc'
 }

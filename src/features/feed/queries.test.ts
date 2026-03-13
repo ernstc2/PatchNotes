@@ -86,22 +86,37 @@ describe('parseSummary', () => {
 // ─── getFeedItems ──────────────────────────────────────────────────────────────
 
 describe('getFeedItems', () => {
-  it('calls db with isNotNull(summary) filter and desc(date) order when no filters', async () => {
-    const { whereMock, orderByMock, limitMock } = makeSelectChain([]);
+  it('calls db twice when no filters (date-scoped: first for latest date, second for items)', async () => {
+    // First call: date lookup — returns a date, triggers second call
+    const latestDate = new Date('2024-01-15T12:00:00Z');
+    const limitForDate = vi.fn().mockResolvedValue([{ date: latestDate }]);
+    const orderByForDate = vi.fn().mockReturnValue({ limit: limitForDate });
+    const whereForDate = vi.fn().mockReturnValue({ orderBy: orderByForDate });
+    const fromForDate = vi.fn().mockReturnValue({ where: whereForDate });
+
+    // Second call: items query
+    const limitForItems = vi.fn().mockResolvedValue([]);
+    const orderByForItems = vi.fn().mockReturnValue({ limit: limitForItems });
+    const whereForItems = vi.fn().mockReturnValue({ orderBy: orderByForItems });
+    const fromForItems = vi.fn().mockReturnValue({ where: whereForItems });
+
+    mockDb.select
+      .mockReturnValueOnce({ from: fromForDate })
+      .mockReturnValueOnce({ from: fromForItems });
 
     await getFeedItems();
 
-    expect(mockDb.select).toHaveBeenCalled();
-    expect(whereMock).toHaveBeenCalled();
-    expect(orderByMock).toHaveBeenCalled();
-    expect(limitMock).toHaveBeenCalledWith(100);
+    expect(mockDb.select).toHaveBeenCalledTimes(2);
+    expect(limitForDate).toHaveBeenCalledWith(1);
+    expect(limitForItems).toHaveBeenCalledWith(100);
   });
 
-  it('returns results from db query', async () => {
+  it('returns results from db query (via type filter, broad path)', async () => {
     const fakeItem = { id: 'abc', title: 'Test' };
     makeSelectChain([fakeItem]);
 
-    const result = await getFeedItems();
+    // Using type filter to take the broad (single-select) path for simpler mock setup
+    const result = await getFeedItems({ type: 'bill' });
 
     expect(result).toEqual([fakeItem]);
   });
@@ -226,10 +241,11 @@ describe('getFeedItems sort', () => {
     expect(mockDb.select).toHaveBeenCalled();
   });
 
-  it('applies limit of 100', async () => {
+  it('applies limit of 100 on broad query path (when explicit filter active)', async () => {
     const { limitMock } = makeSelectChain([]);
 
-    await getFeedItems({});
+    // Providing a type filter activates the broad (non-date-scoped) path
+    await getFeedItems({ sort: 'asc', type: 'bill' });
 
     expect(limitMock).toHaveBeenCalledWith(100);
   });

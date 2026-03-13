@@ -235,6 +235,109 @@ describe('getFeedItems sort', () => {
   });
 });
 
+// ─── getFeedItems multi-topic filtering ──────────────────────────────────────
+
+describe('getFeedItems multi-topic filtering', () => {
+  it('accepts topics array and calls db.select', async () => {
+    const healthcareItem = { id: 'h1', title: 'Medicare', topic: 'healthcare' };
+    const taxItem = { id: 't1', title: 'Tax reform', topic: 'taxes' };
+    makeSelectChain([healthcareItem, taxItem]);
+
+    const result = await getFeedItems({ topics: ['healthcare', 'taxes'] });
+
+    expect(mockDb.select).toHaveBeenCalled();
+    expect(result).toEqual([healthcareItem, taxItem]);
+  });
+
+  it('still works with single topic (backward compat via eq)', async () => {
+    const item = { id: 'h1', title: 'Medicare', topic: 'healthcare' };
+    makeSelectChain([item]);
+
+    const result = await getFeedItems({ topic: 'healthcare' });
+
+    expect(mockDb.select).toHaveBeenCalled();
+    expect(result).toEqual([item]);
+  });
+
+  it('does not call inArray when topics is empty array', async () => {
+    makeSelectChain([]);
+
+    // Should not throw even with empty array
+    await expect(getFeedItems({ topics: [] })).resolves.toEqual([]);
+    expect(mockDb.select).toHaveBeenCalled();
+  });
+});
+
+// ─── getFeedItems date-scoped default ────────────────────────────────────────
+
+describe('getFeedItems date-scoped default', () => {
+  it('makes two select calls when no filters provided (first for latest date, second for items)', async () => {
+    // First call: date lookup
+    const latestDate = new Date('2024-01-15T12:00:00Z');
+    const limitForDate = vi.fn().mockResolvedValue([{ date: latestDate }]);
+    const orderByForDate = vi.fn().mockReturnValue({ limit: limitForDate });
+    const whereForDate = vi.fn().mockReturnValue({ orderBy: orderByForDate });
+    const fromForDate = vi.fn().mockReturnValue({ where: whereForDate });
+
+    // Second call: items query
+    const fakeItem = { id: 'i1', title: 'Test item' };
+    const limitForItems = vi.fn().mockResolvedValue([fakeItem]);
+    const orderByForItems = vi.fn().mockReturnValue({ limit: limitForItems });
+    const whereForItems = vi.fn().mockReturnValue({ orderBy: orderByForItems });
+    const fromForItems = vi.fn().mockReturnValue({ where: whereForItems });
+
+    mockDb.select
+      .mockReturnValueOnce({ from: fromForDate })
+      .mockReturnValueOnce({ from: fromForItems });
+
+    const result = await getFeedItems();
+
+    expect(mockDb.select).toHaveBeenCalledTimes(2);
+    expect(result).toEqual([fakeItem]);
+  });
+
+  it('returns empty array when no items exist (latest date query returns empty)', async () => {
+    const limitForDate = vi.fn().mockResolvedValue([]);
+    const orderByForDate = vi.fn().mockReturnValue({ limit: limitForDate });
+    const whereForDate = vi.fn().mockReturnValue({ orderBy: orderByForDate });
+    const fromForDate = vi.fn().mockReturnValue({ where: whereForDate });
+
+    mockDb.select.mockReturnValueOnce({ from: fromForDate });
+
+    const result = await getFeedItems();
+
+    expect(result).toEqual([]);
+    // Only one select call (date lookup returned nothing, so items query skipped)
+    expect(mockDb.select).toHaveBeenCalledTimes(1);
+  });
+
+  it('makes only one select call when q filter is provided (no date scoping)', async () => {
+    const fakeItem = { id: 'i1', title: 'Tax reform' };
+    makeSelectChain([fakeItem]);
+
+    const result = await getFeedItems({ q: 'tax' });
+
+    expect(mockDb.select).toHaveBeenCalledTimes(1);
+    expect(result).toEqual([fakeItem]);
+  });
+
+  it('makes only one select call when type filter is provided (no date scoping)', async () => {
+    makeSelectChain([]);
+
+    await getFeedItems({ type: 'bill' });
+
+    expect(mockDb.select).toHaveBeenCalledTimes(1);
+  });
+
+  it('makes only one select call when topic filter is provided (no date scoping)', async () => {
+    makeSelectChain([]);
+
+    await getFeedItems({ topic: 'healthcare' });
+
+    expect(mockDb.select).toHaveBeenCalledTimes(1);
+  });
+});
+
 // ─── getFeedItems topic filtering (FEED-04 / SRCH-02) ───────────────────────
 
 describe('getFeedItems topic filtering', () => {

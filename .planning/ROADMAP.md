@@ -2,7 +2,7 @@
 
 ## Overview
 
-Eight phases that build PatchNotes from bare infrastructure to a portfolio-ready government policy digest. Phases 1-3 are strictly sequential (infrastructure, then data, then AI). Phase 4 produces the first publicly-readable product. Phases 5-7 add search, user accounts, and email — each independently deployable. Phase 8 finishes for the portfolio. Phase 9 closes audit gaps from the v1.0 milestone audit.
+Ten phases that build PatchNotes from bare infrastructure to a portfolio-ready government policy digest. Phases 1-3 are strictly sequential (infrastructure, then data, then AI). Phase 4 produces the first publicly-readable product. Phases 5-7 add search, user accounts, and email — each independently deployable. Phase 8 finishes for the portfolio. Phase 9 closes audit gaps. Phase 10 cleans up accumulated tech debt from the v1.0 milestone audit.
 
 ## Phases
 
@@ -21,6 +21,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow (completed 2026-03-12)
 - [x] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project (completed 2026-03-13)
 - [x] **Phase 9: Topic Classification Pipeline** - Add AI-driven topic classification to the summarization pipeline, backfill existing items, and close the root cause behind broken topic filtering, search, and email notifications (completed 2026-03-13)
+- [ ] **Phase 10: Tech Debt Cleanup** - Remove dead code, fix feed date logic, support multi-topic watchlist filtering, and deepen E2E test coverage
 
 ## Phase Details
 
@@ -155,10 +156,25 @@ Plans:
 - [ ] 09-01-PLAN.md — Extend SummarySchema with topic enum, update Gemini prompt, write topic during summarization, backfill existing items
 - [ ] 09-02-PLAN.md — Verify topic filtering in feed, search, and email notification pipeline end-to-end
 
+### Phase 10: Tech Debt Cleanup
+**Goal**: Clean up accumulated tech debt from v1.0 — remove dead code, fix edge-case logic, improve multi-topic UX, and deepen E2E test coverage
+**Depends on**: Phase 9
+**Requirements**: None (tech debt — no new requirements)
+**Gap Closure:** Addresses 4 actionable tech debt items from v1.0 milestone audit
+**Success Criteria** (what must be TRUE):
+  1. `proxy.ts` is renamed to `middleware.ts` so Next.js actually executes route protection middleware — server component guards remain as defense-in-depth
+  2. Homepage feed shows items from today (or most recent day with data) rather than a blanket "recent 50" query
+  3. Logged-in users with multiple watchlist topics see items for all their topics on the homepage, not just `userTopics[0]`
+  4. E2E test suite includes at least one behavioral flow beyond smoke-level render checks (e.g., feed filtering, search, or navigation)
+**Plans:** 2 plans
+Plans:
+- [ ] 10-01-PLAN.md — Fix homepage feed date scoping and multi-topic watchlist filtering in query layer and page
+- [ ] 10-02-PLAN.md — Replace dead proxy.ts with working middleware.ts and add behavioral E2E filter tests
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -171,3 +187,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
 | 8. Polish + Portfolio | 2/2 | Complete   | 2026-03-13 |
 | 9. Topic Classification Pipeline | 2/2 | Complete   | 2026-03-13 |
+| 10. Tech Debt Cleanup | 0/2 | Pending    |  |

@@ -1,5 +1,18 @@
 import { z } from 'zod';
 
+export const TOPIC_VALUES = [
+  'healthcare',
+  'taxes',
+  'immigration',
+  'environment',
+  'defense',
+  'education',
+  'economy',
+  'other',
+] as const;
+
+export type TopicValue = (typeof TOPIC_VALUES)[number];
+
 export const SummarySchema = z.object({
   headline: z
     .string()
@@ -17,6 +30,11 @@ export const SummarySchema = z.object({
     .enum(['broad_national', 'moderate_regional', 'narrow_administrative'])
     .describe(
       'Scope signal: broad_national = affects most Americans broadly; moderate_regional = affects a sector or region; narrow_administrative = procedural/internal change.'
+    ),
+  topic: z
+    .enum(TOPIC_VALUES)
+    .describe(
+      'Primary policy topic. Must be exactly one of the allowed values. Use "other" only if the item clearly does not fit any listed category.'
     ),
 });
 

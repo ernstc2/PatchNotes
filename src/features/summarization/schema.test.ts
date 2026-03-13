@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { SummarySchema, summaryJsonSchema } from './schema';
+import { SummarySchema, summaryJsonSchema, TOPIC_VALUES } from './schema';
 import { buildPrompt } from './prompt';
 import type { PolicyItem } from '@/lib/db/schema/items';
 
@@ -9,6 +9,7 @@ const validSummary = {
   whoAffected: 'Hospitals and outpatient clinics with more than 50 employees.',
   whyItMatters: 'Non-compliance may result in reduced Medicare reimbursements.',
   severity: 'moderate_regional' as const,
+  topic: 'healthcare' as const,
 };
 
 const mockPolicyItem: PolicyItem = {
@@ -27,7 +28,7 @@ const mockPolicyItem: PolicyItem = {
 };
 
 describe('SummarySchema', () => {
-  it('succeeds for a valid object with all 5 fields', () => {
+  it('succeeds for a valid object with all 6 fields', () => {
     const result = SummarySchema.safeParse(validSummary);
     expect(result.success).toBe(true);
   });
@@ -86,6 +87,27 @@ describe('SummarySchema', () => {
     const result = SummarySchema.safeParse({ ...validSummary, severity: 'narrow_administrative' });
     expect(result.success).toBe(true);
   });
+
+  it('accepts valid topic value: healthcare', () => {
+    const result = SummarySchema.safeParse({ ...validSummary, topic: 'healthcare' });
+    expect(result.success).toBe(true);
+  });
+
+  it('accepts topic: other', () => {
+    const result = SummarySchema.safeParse({ ...validSummary, topic: 'other' });
+    expect(result.success).toBe(true);
+  });
+
+  it('rejects invalid topic value: national_security', () => {
+    const result = SummarySchema.safeParse({ ...validSummary, topic: 'national_security' });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejects missing topic field', () => {
+    const { topic: _, ...rest } = validSummary;
+    const result = SummarySchema.safeParse(rest);
+    expect(result.success).toBe(false);
+  });
 });
 
 describe('summaryJsonSchema', () => {
@@ -93,13 +115,14 @@ describe('summaryJsonSchema', () => {
     expect(summaryJsonSchema).toHaveProperty('type', 'object');
   });
 
-  it('has all 5 properties in the schema', () => {
+  it('has all 6 properties in the schema including topic', () => {
     const props = (summaryJsonSchema as Record<string, unknown>).properties as Record<string, unknown>;
     expect(props).toHaveProperty('headline');
     expect(props).toHaveProperty('whatChanged');
     expect(props).toHaveProperty('whoAffected');
     expect(props).toHaveProperty('whyItMatters');
     expect(props).toHaveProperty('severity');
+    expect(props).toHaveProperty('topic');
   });
 });
 
@@ -132,5 +155,17 @@ describe('buildPrompt', () => {
   it('includes plain language instruction', () => {
     const prompt = buildPrompt(mockPolicyItem);
     expect(prompt.toLowerCase()).toContain('plain language');
+  });
+
+  it('includes all TOPIC_VALUES in prompt output', () => {
+    const prompt = buildPrompt(mockPolicyItem);
+    for (const topic of TOPIC_VALUES) {
+      expect(prompt).toContain(topic);
+    }
+  });
+
+  it('includes explicit topic selection instruction', () => {
+    const prompt = buildPrompt(mockPolicyItem);
+    expect(prompt.toLowerCase()).toContain('topic');
   });
 });

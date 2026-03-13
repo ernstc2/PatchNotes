@@ -150,6 +150,7 @@ Plans:
   3. Search results can be narrowed by topic and the URL-encoded filter returns correct results
   4. A user subscribed to "healthcare" receives an email after ingest when healthcare items were ingested that day
   5. All existing items in the database have been backfilled with topic classifications
+**Plans:** 2 plans
 Plans:
 - [ ] 09-01-PLAN.md — Extend SummarySchema with topic enum, update Gemini prompt, write topic during summarization, backfill existing items
 - [ ] 09-02-PLAN.md — Verify topic filtering in feed, search, and email notification pipeline end-to-end

@@ -1,3 +1,5 @@
+import { TOPIC_VALUES } from '@/features/summarization/schema';
+
 export const TYPE_OPTIONS = [
   { value: 'all', label: 'All types' },
   { value: 'executive_order', label: 'Executive Orders' },
@@ -6,13 +8,20 @@ export const TYPE_OPTIONS = [
   { value: 'proposed_rule', label: 'Proposed Rules' },
 ];
 
+const TOPIC_LABELS: Record<string, string> = {
+  healthcare: 'Healthcare',
+  taxes: 'Taxes',
+  immigration: 'Immigration',
+  environment: 'Environment',
+  defense: 'Defense',
+  education: 'Education',
+  economy: 'Economy',
+};
+
 export const TOPIC_OPTIONS = [
   { value: 'all', label: 'All topics' },
-  { value: 'healthcare', label: 'Healthcare' },
-  { value: 'taxes', label: 'Taxes' },
-  { value: 'immigration', label: 'Immigration' },
-  { value: 'environment', label: 'Environment' },
-  { value: 'defense', label: 'Defense' },
-  { value: 'education', label: 'Education' },
-  { value: 'economy', label: 'Economy' },
+  ...TOPIC_VALUES.filter((t) => t !== 'other').map((t) => ({
+    value: t,
+    label: TOPIC_LABELS[t] ?? t.charAt(0).toUpperCase() + t.slice(1),
+  })),
 ];

@@ -3,7 +3,7 @@ CREATE TABLE "system_status" (
 	"service" text NOT NULL,
 	"status" text NOT NULL,
 	"message" text,
-	"checkedAt" timestamp with time zone DEFAULT now() NOT NULL
+	"checked_at" timestamp with time zone DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "policy_items" (

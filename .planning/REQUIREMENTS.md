@@ -66,7 +66,7 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 - [x] **INFRA-01**: App is deployed and publicly accessible with a real URL
 - [x] **INFRA-02**: CI/CD pipeline runs tests on every push
 - [x] **INFRA-03**: App uses TypeScript throughout
-- [ ] **INFRA-04**: App has meaningful test coverage (unit + E2E)
+- [x] **INFRA-04**: App has meaningful test coverage (unit + E2E)
 - [x] **INFRA-05**: All services run on free tiers ($0 total cost)
 
 ## v2 Requirements
@@ -145,7 +145,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 8 | Complete |
 | INFRA-03 | Phase 1 | Complete |
-| INFRA-04 | Phase 8 | Pending |
+| INFRA-04 | Phase 8 | Complete |
 | INFRA-05 | Phase 1 | Complete |
 
 **Coverage:**

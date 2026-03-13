@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Search + Explore** - Postgres full-text keyword search and browse-all explore page with type/topic/date filters (completed 2026-03-12)
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
 - [x] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow (completed 2026-03-12)
-- [ ] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project
+- [x] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project (completed 2026-03-13)
 
 ## Phase Details
 
@@ -133,7 +133,7 @@ Plans:
   2. CI runs on every push and a green badge is visible on the README
   3. The app has meaningful unit and E2E test coverage — at minimum the ingest pipeline, search query, and auth flow are tested
   4. The app returns a sensible 404 page for unknown routes and a 500 page for server errors — no blank screens
-**Plans:** 2 plans
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 08-01-PLAN.md — Install Playwright, create E2E smoke tests, and add Next.js error pages (not-found, error, global-error)
 - [ ] 08-02-PLAN.md — Extend CI workflow with unit test and E2E jobs, rewrite README as portfolio artifact with CI badge
@@ -152,4 +152,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 5. Search + Explore | 2/2 | Complete   | 2026-03-12 |
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
-| 8. Polish + Portfolio | 0/2 | Not started | - |
+| 8. Polish + Portfolio | 2/2 | Complete   | 2026-03-13 |

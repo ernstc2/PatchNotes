@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 08-02-PLAN.md
-last_updated: "2026-03-12T23:47:38.637Z"
+stopped_at: Completed 08-01-PLAN.md
+last_updated: "2026-03-13T00:44:09.765Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
   total_phases: 8
-  completed_phases: 7
+  completed_phases: 8
   total_plans: 17
-  completed_plans: 16
+  completed_plans: 17
   percent: 100
 ---
 
@@ -100,6 +100,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 07-email-notifications P01 | 4 | 2 tasks | 8 files |
 | Phase 07-email-notifications P02 | 4 | 2 tasks | 6 files |
 | Phase 08-polish-portfolio P02 | 1 | 2 tasks | 2 files |
+| Phase 08-polish-portfolio P01 | 55 | 2 tasks | 10 files |
 
 ## Accumulated Context
 
@@ -155,6 +156,9 @@ Recent decisions affecting current work:
 - [Phase 07-email-notifications]: from address uses onboarding@resend.dev shared domain — custom domain requires DNS verification, not needed for portfolio
 - [Phase 08-polish-portfolio]: E2E CI job depends on ci job via needs: ci — E2E only runs when unit tests pass
 - [Phase 08-polish-portfolio]: All four required secrets passed to e2e job env block to prevent Next.js server crash at runtime in CI
+- [Phase 08-polish-portfolio]: Vitest exclude tests/e2e/** added — Playwright spec files use @playwright/test imports Vitest cannot resolve
+- [Phase 08-polish-portfolio]: UNSUBSCRIBE_SECRET and Resend module-level validation moved to runtime helpers — extends lazy-loading pattern to all env-dependent module singletons
+- [Phase 08-polish-portfolio]: global-error.tsx uses inline styles not Tailwind — globals.css may not load when root layout errors
 
 ### Pending Todos
 
@@ -168,6 +172,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-12T23:47:38.634Z
-Stopped at: Completed 08-02-PLAN.md
+Last session: 2026-03-13T00:44:09.761Z
+Stopped at: Completed 08-01-PLAN.md
 Resume file: None

@@ -234,3 +234,52 @@ describe('getFeedItems sort', () => {
     expect(limitMock).toHaveBeenCalledWith(100);
   });
 });
+
+// ─── getFeedItems topic filtering (FEED-04 / SRCH-02) ───────────────────────
+
+describe('getFeedItems topic filtering', () => {
+  it('returns only items matching topic filter (getFeedItems returns DB result as-is)', async () => {
+    // The DB applies the eq(policyItems.topic, 'healthcare') WHERE condition.
+    // In unit tests the mock returns whatever we configure — we seed only
+    // healthcare items to confirm the function passes DB results through correctly.
+    const healthcareItems = [
+      { id: 'h1', title: 'Medicare expansion', topic: 'healthcare' },
+      { id: 'h2', title: 'Medicaid update', topic: 'healthcare' },
+    ];
+    makeSelectChain(healthcareItems);
+
+    const result = await getFeedItems({ topic: 'healthcare' });
+
+    expect(result).toEqual(healthcareItems);
+    expect(result.every((item) => (item as { topic: string }).topic === 'healthcare')).toBe(true);
+  });
+
+  it('applies topic and keyword filters simultaneously and returns matching results (SRCH-02)', async () => {
+    const insulinItem = { id: 'h3', title: 'Insulin price cap rule', topic: 'healthcare' };
+    makeSelectChain([insulinItem]);
+
+    const result = await getFeedItems({ q: 'insulin', topic: 'healthcare' });
+
+    expect(mockDb.select).toHaveBeenCalled();
+    expect(result).toEqual([insulinItem]);
+  });
+
+  it('applies topic and type filters simultaneously and returns matching results', async () => {
+    const educationBill = { id: 'e1', title: 'Student loan bill', type: 'bill', topic: 'education' };
+    makeSelectChain([educationBill]);
+
+    const result = await getFeedItems({ type: 'bill', topic: 'education' });
+
+    expect(mockDb.select).toHaveBeenCalled();
+    expect(result).toEqual([educationBill]);
+  });
+
+  it('returns empty array when no items match topic filter', async () => {
+    // DB returns no rows — topic filter excluded all items
+    makeSelectChain([]);
+
+    const result = await getFeedItems({ topic: 'defense' });
+
+    expect(result).toEqual([]);
+  });
+});

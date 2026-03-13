@@ -2,7 +2,7 @@
 
 ## Overview
 
-Eight phases that build PatchNotes from bare infrastructure to a portfolio-ready government policy digest. Phases 1-3 are strictly sequential (infrastructure, then data, then AI). Phase 4 produces the first publicly-readable product. Phases 5-7 add search, user accounts, and email — each independently deployable. Phase 8 finishes for the portfolio.
+Eight phases that build PatchNotes from bare infrastructure to a portfolio-ready government policy digest. Phases 1-3 are strictly sequential (infrastructure, then data, then AI). Phase 4 produces the first publicly-readable product. Phases 5-7 add search, user accounts, and email — each independently deployable. Phase 8 finishes for the portfolio. Phase 9 closes audit gaps from the v1.0 milestone audit.
 
 ## Phases
 
@@ -20,6 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
 - [x] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow (completed 2026-03-12)
 - [x] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project (completed 2026-03-13)
+- [ ] **Phase 9: Topic Classification Pipeline** - Add AI-driven topic classification to the summarization pipeline, backfill existing items, and close the root cause behind broken topic filtering, search, and email notifications
 
 ## Phase Details
 
@@ -138,10 +139,25 @@ Plans:
 - [ ] 08-01-PLAN.md — Install Playwright, create E2E smoke tests, and add Next.js error pages (not-found, error, global-error)
 - [ ] 08-02-PLAN.md — Extend CI workflow with unit test and E2E jobs, rewrite README as portfolio artifact with CI badge
 
+### Phase 9: Topic Classification Pipeline
+**Goal**: Every policy item in the database has a classified topic, enabling topic filtering in the feed, topic-based search narrowing, and watchlist email notifications to actually match and send
+**Depends on**: Phase 3 (summarization pipeline), Phase 8 (current state)
+**Requirements**: FEED-04, SRCH-02, PERS-05
+**Gap Closure:** Closes gaps from v1.0 milestone audit
+**Success Criteria** (what must be TRUE):
+  1. After ingest + summarization, every new item has a non-null `topic` value in `policy_items` drawn from a fixed enum of topic categories
+  2. Filtering the feed by a topic returns only items classified under that topic — not zero rows
+  3. Search results can be narrowed by topic and the URL-encoded filter returns correct results
+  4. A user subscribed to "healthcare" receives an email after ingest when healthcare items were ingested that day
+  5. All existing items in the database have been backfilled with topic classifications
+Plans:
+- [ ] 09-01-PLAN.md — Extend SummarySchema with topic enum, update Gemini prompt, write topic during summarization, backfill existing items
+- [ ] 09-02-PLAN.md — Verify topic filtering in feed, search, and email notification pipeline end-to-end
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -153,3 +169,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
 | 8. Polish + Portfolio | 2/2 | Complete   | 2026-03-13 |
+| 9. Topic Classification Pipeline | 0/2 | Pending    |  |

@@ -11,7 +11,6 @@ import { getFeedItems } from '@/features/feed/queries';
 import { parseSummary } from '@/features/feed/types';
 import { auth } from '@/lib/auth';
 import { getUserTopics, getBookmarkedIds } from '@/features/auth/queries';
-import { TOPIC_OPTIONS } from '@/features/feed/options';
 
 export default async function HomePage({
   searchParams,
@@ -23,7 +22,7 @@ export default async function HomePage({
   // Optional session check — page works without auth
   const session = await auth.api.getSession({ headers: await headers() }).catch(() => null);
 
-  let effectiveTopic = topic;
+  let effectiveTopics: string[] = [];
   let bookmarkedIds = new Set<string>();
   let isWatchlistFiltered = false;
 
@@ -37,17 +36,21 @@ export default async function HomePage({
 
     // Apply watchlist filter only if user has topics and no explicit topic filter is set
     if (userTopics.length > 0 && !topic) {
-      effectiveTopic = userTopics[0];
+      effectiveTopics = userTopics;
       isWatchlistFiltered = true;
     }
   }
 
-  const items = await getFeedItems({ q, type, topic: effectiveTopic, sort });
+  const items = await getFeedItems({
+    q,
+    type,
+    topic, // explicit URL filter (single topic from FilterBar click)
+    topics: effectiveTopics.length > 0 ? effectiveTopics : undefined,
+    sort,
+  });
 
-  // Resolve display label for the active watchlist topic
-  const watchlistTopicLabel = isWatchlistFiltered
-    ? (TOPIC_OPTIONS.find((o) => o.value === effectiveTopic)?.label ?? effectiveTopic)
-    : null;
+  // Watchlist notice label for multi-topic case
+  const watchlistTopicLabel = isWatchlistFiltered ? 'your watchlist topics' : null;
 
   return (
     <div className="min-h-screen bg-background text-foreground">

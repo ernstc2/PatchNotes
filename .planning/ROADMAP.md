@@ -20,7 +20,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 6: User Accounts + Personalization** - Auth, topic watchlist with onboarding flow, and bookmarks — introduced only when identity is actually needed
 - [x] **Phase 7: Email Notifications** - Resend-powered watchlist emails triggered after each daily ingest, with unsubscribe flow (completed 2026-03-12)
 - [x] **Phase 8: Polish + Portfolio** - Accessibility audit, CI badge, test coverage, error pages, seed data, and a README that sells the project (completed 2026-03-13)
-- [ ] **Phase 9: Topic Classification Pipeline** - Add AI-driven topic classification to the summarization pipeline, backfill existing items, and close the root cause behind broken topic filtering, search, and email notifications
+- [x] **Phase 9: Topic Classification Pipeline** - Add AI-driven topic classification to the summarization pipeline, backfill existing items, and close the root cause behind broken topic filtering, search, and email notifications (completed 2026-03-13)
 
 ## Phase Details
 
@@ -150,7 +150,7 @@ Plans:
   3. Search results can be narrowed by topic and the URL-encoded filter returns correct results
   4. A user subscribed to "healthcare" receives an email after ingest when healthcare items were ingested that day
   5. All existing items in the database have been backfilled with topic classifications
-**Plans:** 1/2 plans executed
+**Plans:** 2/2 plans complete
 Plans:
 - [ ] 09-01-PLAN.md — Extend SummarySchema with topic enum, update Gemini prompt, write topic during summarization, backfill existing items
 - [ ] 09-02-PLAN.md — Verify topic filtering in feed, search, and email notification pipeline end-to-end
@@ -170,4 +170,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 6. User Accounts + Personalization | 2/3 | In Progress|  |
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
 | 8. Polish + Portfolio | 2/2 | Complete   | 2026-03-13 |
-| 9. Topic Classification Pipeline | 1/2 | In Progress|  |
+| 9. Topic Classification Pipeline | 2/2 | Complete   | 2026-03-13 |

@@ -52,7 +52,7 @@ Requirements for the full rebuild. Each maps to roadmap phases.
 - [x] **PERS-02**: User can manage their topic watchlist from their profile
 - [x] **PERS-03**: User can bookmark items to save for later
 - [x] **PERS-04**: User can view all bookmarked items on their profile
-- [ ] **PERS-05**: User receives email notifications when items match their watchlist topics
+- [x] **PERS-05**: User receives email notifications when items match their watchlist topics
 
 ### UI & Design
 
@@ -141,7 +141,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PERS-02 | Phase 6 | Complete |
 | PERS-03 | Phase 6 | Complete |
 | PERS-04 | Phase 6 | Complete |
-| PERS-05 | Phase 9 | Pending |
+| PERS-05 | Phase 9 | Complete |
 | INFRA-01 | Phase 1 | Complete |
 | INFRA-02 | Phase 8 | Complete |
 | INFRA-03 | Phase 1 | Complete |

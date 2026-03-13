@@ -3,15 +3,31 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: planning
-stopped_at: Completed 09-02-PLAN.md
-last_updated: "2026-03-13T01:55:13.547Z"
+stopped_at: Completed 10-01-PLAN.md
+last_updated: "2026-03-13T02:37:18.792Z"
 last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
 progress:
-  total_phases: 9
+  total_phases: 10
+  completed_phases: 9
+  total_plans: 21
+  completed_plans: 20
+  percent: 95
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: planning
+stopped_at: Completed 09-02-PLAN.md
+last_updated: "2026-03-13T01:59:23.848Z"
+last_activity: 2026-03-11 — Roadmap created, all 31 v1 requirements mapped to 8 phases
+progress:
+  [██████████] 95%
   completed_phases: 9
   total_plans: 19
   completed_plans: 19
-  percent: 100
+  percent: 95
 ---
 
 ---
@@ -103,6 +119,7 @@ Progress: [░░░░░░░░░░] 0%
 | Phase 08-polish-portfolio P01 | 55 | 2 tasks | 10 files |
 | Phase 09-topic-classification-pipeline P01 | 3 | 2 tasks | 7 files |
 | Phase 09-topic-classification-pipeline P02 | 5 | 2 tasks | 1 files |
+| Phase 10-tech-debt-cleanup P01 | 2 | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -163,6 +180,8 @@ Recent decisions affecting current work:
 - [Phase 08-polish-portfolio]: global-error.tsx uses inline styles not Tailwind — globals.css may not load when root layout errors
 - [Phase 09-topic-classification-pipeline]: TOPIC_VALUES as const array in schema.ts drives both SummarySchema enum and options.ts UI filter (single source of truth)
 - [Phase 09-topic-classification-pipeline]: 'other' excluded from TOPIC_OPTIONS UI filter — it is an internal fallback classification only
+- [Phase 10-tech-debt-cleanup]: FeedFilters.topics?: string[] added alongside topic?: string — topics is watchlist array, topic is explicit URL filter; getFeedItems handles both with inArray taking precedence
+- [Phase 10-tech-debt-cleanup]: Date-scoped default: two-step query (latest date first, then items for that day) applied only when no explicit filters — prevents empty results when searching historical items
 
 ### Pending Todos
 
@@ -176,6 +195,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-13T01:55:13.543Z
-Stopped at: Completed 09-02-PLAN.md
+Last session: 2026-03-13T02:37:18.788Z
+Stopped at: Completed 10-01-PLAN.md
 Resume file: None

@@ -166,7 +166,7 @@ Plans:
   2. Homepage feed shows items from today (or most recent day with data) rather than a blanket "recent 50" query
   3. Logged-in users with multiple watchlist topics see items for all their topics on the homepage, not just `userTopics[0]`
   4. E2E test suite includes at least one behavioral flow beyond smoke-level render checks (e.g., feed filtering, search, or navigation)
-**Plans:** 2 plans
+**Plans:** 1/2 plans executed
 Plans:
 - [ ] 10-01-PLAN.md — Fix homepage feed date scoping and multi-topic watchlist filtering in query layer and page
 - [ ] 10-02-PLAN.md — Replace dead proxy.ts with working middleware.ts and add behavioral E2E filter tests
@@ -187,4 +187,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 10
 | 7. Email Notifications | 2/2 | Complete   | 2026-03-12 |
 | 8. Polish + Portfolio | 2/2 | Complete   | 2026-03-13 |
 | 9. Topic Classification Pipeline | 2/2 | Complete   | 2026-03-13 |
-| 10. Tech Debt Cleanup | 0/2 | Pending    |  |
+| 10. Tech Debt Cleanup | 1/2 | In Progress|  |
